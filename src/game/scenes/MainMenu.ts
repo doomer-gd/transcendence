@@ -28,7 +28,7 @@ export class MainMenu extends Scene
 
         EventBus.emit('current-scene-ready', this);
     }
-    
+
     changeScene ()
     {
         if (this.logoTween)
@@ -37,7 +37,7 @@ export class MainMenu extends Scene
             this.logoTween = null;
         }
 
-        this.scene.start('Game');
+        this.scene.start('TestScene');
     }
 
     moveLogo (vueCallback: ({ x, y }: { x: number, y: number }) => void)
@@ -52,7 +52,7 @@ export class MainMenu extends Scene
             {
                 this.logoTween.play();
             }
-        } 
+        }
         else
         {
             this.logoTween = this.tweens.add({
