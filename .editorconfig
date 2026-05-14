@@ -1,0 +1,21 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs.
+# https://editorconfig.org
+
+root = true
+
+# Global defaults for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Specific settings for TypeScript, JavaScript, and JSON files
+[*.{ts,tsx,js,jsx,json}]
+indent_style = space
+indent_size = 2
+
+# Settings for Markdown files (trailing whitespace can be meaningful)
+[*.md]
+trim_trailing_whitespace = false
