@@ -1,0 +1,8 @@
+{
+  "UP": "W",
+  "LEFT": "A",
+  "DOWN": "S",
+  "RIGHT": "D",
+  "JUMP": "SPACE",
+  "ATTACK": "F"
+}

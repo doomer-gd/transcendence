@@ -16,7 +16,7 @@ export class TestScene extends Scene
 	{
 		this.load.image('background_dark', './assets/samples/bulkhead-wallsx1.png');
 		this.load.image('player', './assets/samples/witch1.png');
-		this.load.image('enemy', './assets/samples/vampire1.png')
+		this.load.image('enemy', './assets/samples/vampire1.png');
 	}
 
 	create()
