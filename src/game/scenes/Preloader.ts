@@ -1,9 +1,6 @@
 import { Scene } from 'phaser';
-import { Control } from '../player/Control';
 
 export class Preloader extends Scene {
-
-  control: Control;
 
   constructor() {
     super('Preloader');
@@ -45,7 +42,7 @@ export class Preloader extends Scene {
 
     //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
 
-    this.control.setKeyMap(this.cache.json.get('keymap'));
+
     this.scene.start('MainMenu');
   }
 }
