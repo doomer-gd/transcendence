@@ -1,10 +1,12 @@
 import { EventBus } from '../EventBus';
+import { Player } from '../player/Player';
 import { Scene } from 'phaser';
 
 export class TestScene extends Scene
 {
 	background: Phaser.GameObjects.Image;
-	player:		Phaser.Physics.Arcade.Sprite;
+	player:     Player;
+  playerSprite: Phaser.Physics.Arcade.Sprite;
 	cursors:	Phaser.Types.Input.Keyboard.CursorKeys | undefined;
 
 	constructor ()
@@ -23,29 +25,11 @@ export class TestScene extends Scene
 	{
 		this.background = this.add.image(500, 300 , 'background_dark');
 		this.background.setScale(2);
-		this.player = this.physics.add.sprite(700, 400, 'player');
-		this.player.setCollideWorldBounds(true);
 		this.cursors = this.input.keyboard?.createCursorKeys();
+    this.player = new Player(this, 700, 500);
 	}
 
-	update(time: number, delta: number): void {
-		if (this.cursors?.left.isDown)
-		{
-			this.player.setVelocityX(-100);
-		}
-		else if (this.cursors?.right.isDown)
-		{
-			this.player.setVelocityX(100);
-		}
-		else
-		{
-			this.player.setVelocityX(0);
-		}
-		if (this.cursors?.space.isDown)// && this.player.body?.touching.down)
-		{
-			this.player.setVelocityY(-300);
-		}
-	}
+	update(time: number, delta: number): void {}
 
 
 

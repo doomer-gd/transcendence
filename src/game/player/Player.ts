@@ -1,4 +1,5 @@
 import { PlayerController } from "./PlayerController";
+import { Physics } from 'phaser'
 
 interface IEntityStats
 {
@@ -10,23 +11,26 @@ interface IEntityStats
 interface IPlayerStats extends IEntityStats
 {
   speedCurrent: number,
+  isOnGround: boolean,
   jumpForce: number,
-  canFly: boolean,
+  canFly: boolean
 }
-
-
-
 
 export class Player extends Phaser.GameObjects.GameObject
 {
   anim: Phaser.Animations.Animation;
   controller: PlayerController;
+  sprite: Phaser.Physics.Arcade.Sprite;
   stats: IPlayerStats;
 
-  constructor (scene: Phaser.Scene)
+  constructor (scene: Phaser.Scene, x: number, y: number)
   {
     super(scene, 'player');
     this.controller = new PlayerController(scene, 'keymap');
+    this.scene.add.sprite(x, y, 'player');
+    this.scene.physics.add.existing(this.sprite);
+    this.sprite.setCollideWorldBounds(true);
+    this.body = this.sprite.body;
     this.setListeners();
     this.setPlaceholderStats();
   }
@@ -44,12 +48,22 @@ export class Player extends Phaser.GameObjects.GameObject
 
   setListeners()
   {
-    this.controller.on('move', this.movePlayer);
+    this.controller.on('move', (velocity: number) => this.movePlayer(velocity));
     this.controller.on('jump', this.jumpPlayer);
   }
 
-  movePlayer (){};
-  jumpPlayer(){};
-
-
+  movePlayer (velocity: number)
+  {
+    if (this.body)
+      this.body.velocity.x = velocity * this.stats.speedCurrent;
+  }
+  jumpPlayer()
+  {
+    //should access isOnGround property
+    if (this.body && this.body.touching.down)
+    {
+      this.body.velocity.y = -1 * this.stats.jumpForce;
+      this.stats.isOnGround = false;
+    }
+  }
 }
