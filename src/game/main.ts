@@ -8,10 +8,14 @@ import { TestScene } from './scenes/TestScene';
 
 //  Find out more information about the Game Config at:
 //  https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
+
+const GAME_WIDTH:number = 1024;
+const GAME_HEIGHT:number = 768;
+
 const config: Phaser.Types.Core.GameConfig = {
   type: AUTO,
-  width: 1024,
-  height: 768,
+  width: GAME_WIDTH,
+  height: GAME_HEIGHT,
   parent: 'game-container',
   backgroundColor: '#028af8',
   scene: [
@@ -23,10 +27,18 @@ const config: Phaser.Types.Core.GameConfig = {
     GameOver
   ],
   physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { y: 1300, x: 0 },
-      fps: 60,
+    default: 'matter',
+    matter: {
+      gravity: { y: 3, x: 0 },
+      runner: {
+        fps:60
+      },
+      setBounds: {
+        x: 0,
+        y: 0,
+        width: GAME_WIDTH,
+        height: GAME_HEIGHT,
+      },
       debug: false
     }
   }
