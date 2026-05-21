@@ -1,4 +1,3 @@
-import { EventBus } from '../EventBus';
 import { Player } from '../player/Player';
 import { Scene } from 'phaser';
 
@@ -7,7 +6,6 @@ export class TestScene extends Scene
 	background: Phaser.GameObjects.Image;
 	player:     Player;
   playerSprite: Phaser.Physics.Arcade.Sprite;
-	cursors:	Phaser.Types.Input.Keyboard.CursorKeys | undefined;
 
 	constructor ()
 	{
@@ -25,8 +23,9 @@ export class TestScene extends Scene
 	{
 		this.background = this.add.image(500, 300 , 'background_dark');
 		this.background.setScale(2);
-		this.cursors = this.input.keyboard?.createCursorKeys();
-    this.player = new Player(this, 700, 500);
+    if (this.matter.world.walls.bottom?.label)
+       this.matter.world.walls.bottom.label = 'ground';
+    this.player = new Player(this, 400, 300);
 	}
 
 	update(time: number, delta: number): void {}
