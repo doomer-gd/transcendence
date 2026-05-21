@@ -28,12 +28,13 @@ export class Preloader extends Scene {
   preload() {
     //  Load the assets for the game - Replace with your own assets
     this.load.setPath('assets');
-
     this.load.image('logo', 'logo.png');
     this.load.image('star', 'star.png');
-    this.load.image('background_dark', './assets/samples/bulkhead-wallsx1.png');
-    this.load.image('player', './assets/samples/witch1.png');
-    this.load.image('enemy', './assets/samples/vampire1.png');
+    this.load.setPath('../assets');
+    console.log(this.load.path);
+    this.load.image('background_dark', './samples/bulkhead-wallsx1.png');
+    this.load.image('player', './samples/witch1.png');
+    this.load.image('enemy', './samples/vampire1.png');
   }
 
   create() {
