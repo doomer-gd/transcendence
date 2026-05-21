@@ -1,3 +1,5 @@
+import * as Phaser from 'phaser';
+
 
 interface KeyMap
 {
@@ -14,13 +16,12 @@ export class PlayerController extends Phaser.Events.EventEmitter
 {
   private keyMap: KeyMap;
   private scene: Phaser.Scene;
-  private velocity: Phaser.Types.Math.Vector2Like;
 
   constructor (scene_: Phaser.Scene, keyMapName: string)
   {
     super();
     this.scene = scene_;
-    const keyConfig = JSON.parse(keyMapName);
+    const keyConfig = this.scene.cache.json.get(keyMapName);
     this.convertKeys(keyConfig);
     this.setUpListen();
   }
@@ -50,12 +51,10 @@ export class PlayerController extends Phaser.Events.EventEmitter
   {
     switch (keyPressed){
       case this.keyMap.LEFT:
-        this.velocity.x += -1;
-        this.emit('move', this.velocity.x);
+        this.emit('move', -1);
         break;
       case this.keyMap.RIGHT:
-        this.velocity.x += 1;
-        this.emit('move', this.velocity.x);
+        this.emit('move', 1);
         break;
       case this.keyMap.JUMP:
         this.emit('jump');
