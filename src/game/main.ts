@@ -39,7 +39,11 @@ const config: Phaser.Types.Core.GameConfig = {
         width: GAME_WIDTH,
         height: GAME_HEIGHT,
       },
-      debug: false
+      debug: {showBody: true,
+        showStaticBody: true,
+        showVelocity: true,
+        showCollisions: true
+      }
     }
   }
 };

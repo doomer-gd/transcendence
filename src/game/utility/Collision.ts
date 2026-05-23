@@ -11,14 +11,12 @@ export namespace Colliders{
 
       function checkCallback(data: any)
       {
-        console.log(body.label);
         for (const pair of data.pairs)
         {
           if (pair.bodyA === body)
             callback(pair.bodyB, pair.bodyB.gameObject);
           else if (pair.bodyB === body)
             callback(pair.bodyA, pair.bodyA.gameObject);
-          console.log("missed");
         }
       }
     }
