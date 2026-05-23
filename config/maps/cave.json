@@ -1,43 +1,15 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"cave.json"
+        }
+    },
  "height":24,
  "infinite":false,
  "layers":[
-        {
-         "draworder":"topdown",
-         "id":4,
-         "name":"background",
-         "objects":[
-                {
-                 "gid":1,
-                 "height":768,
-                 "id":1,
-                 "name":"",
-                 "opacity":1,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":1024,
-                 "x":0.666666667,
-                 "y":768
-                }, 
-                {
-                 "height":96,
-                 "id":8,
-                 "name":"",
-                 "opacity":1,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":1024,
-                 "x":0,
-                 "y":672
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
         {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -137,6 +109,18 @@
                  "width":256,
                  "x":704,
                  "y":512
+                }, 
+                {
+                 "height":96,
+                 "id":9,
+                 "name":"",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1024,
+                 "x":-0.352260318846902,
+                 "y":675.300502293077
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -145,19 +129,47 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":9,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.1",
  "tileheight":32,
  "tilesets":[
         {
+         "columns":0,
          "firstgid":1,
-         "source":"background.tsx"
+         "grid":
+            {
+             "height":1,
+             "orientation":"orthogonal",
+             "width":1
+            },
+         "margin":0,
+         "name":"background",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":240,
+         "tiles":[
+                {
+                 "id":0,
+                 "image":"..\/..\/assets\/tiles\/lava-background.png",
+                 "imageheight":240,
+                 "imagewidth":432
+                }],
+         "tilewidth":432
         }, 
         {
+         "columns":9,
          "firstgid":2,
-         "source":"living_stone.tsx"
+         "image":"..\/..\/assets\/tiles\/tileset1.png",
+         "imageheight":192,
+         "imagewidth":288,
+         "margin":0,
+         "name":"living_stone",
+         "spacing":0,
+         "tilecount":54,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":32,
  "type":"map",
