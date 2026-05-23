@@ -16,11 +16,13 @@ export class PlayerController extends Phaser.Events.EventEmitter
 {
   private keyMap: KeyMap;
   private scene: Phaser.Scene;
+  private player: Phaser.Events.EventEmitter;
 
-  constructor (scene_: Phaser.Scene, keyMapName: string)
+  constructor (scene: Phaser.Scene, player: Phaser.Events.EventEmitter, keyMapName: string)
   {
     super();
-    this.scene = scene_;
+    this.scene = scene;
+    this.player = player;
     const keyConfig = this.scene.cache.json.get(keyMapName);
     this.convertKeys(keyConfig);
     this.setUpListen();
@@ -51,13 +53,13 @@ export class PlayerController extends Phaser.Events.EventEmitter
   {
     switch (keyPressed){
       case this.keyMap.LEFT:
-        this.emit('move', -1);
+        this.player.emit('move', -1);
         break;
       case this.keyMap.RIGHT:
-        this.emit('move', 1);
+        this.player.emit('move', 1);
         break;
       case this.keyMap.JUMP:
-        this.emit('jump');
+        this.player.emit('jump');
         break;
     }
   };
@@ -70,7 +72,7 @@ export class PlayerController extends Phaser.Events.EventEmitter
       vector = -1;
     if (this.keyMap.RIGHT?.isDown)
       vector = 1;
-    this.emit('move', vector);
+    this.player.emit('move', vector);
   }
 
   destroy ()
