@@ -23,6 +23,8 @@ export class TestScene extends Scene
     this.load.image('tiles', './assets/tiles/tileset1.png');
     this.load.image('lava-bg', './assets/tiles/lava-background.png');
     this.load.json('keymap', '../../config/keymap.json');
+    this.load.spritesheet('wizard_idle', './assets/animation/Idle.png', {frameWidth: 231, frameHeight: 190});
+    this.load.atlas('wizard', './assets/animation/wizard_atlas.png', './assets/animation/wizard_atals.json');
 	}
 
 	create()
