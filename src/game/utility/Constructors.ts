@@ -17,13 +17,11 @@ export namespace Constructors
       },
     )
   }
-  export function constructSpriteFeet(scene: Phaser.Scene, labelSprite: string, x: number, y: number): Phaser.Physics.Matter.Sprite
+  export function constructSpriteFeet(scene: Phaser.Scene, sprite: Phaser.Physics.Matter.Sprite): Phaser.Physics.Matter.Sprite
   {
-    let sprite: Phaser.Physics.Matter.Sprite;
-
-    sprite = scene.matter.add.sprite(x, y, labelSprite);
     const body =  sprite.body as MatterJS.BodyType;
-    const feet = scene.matter.bodies.rectangle(x, y + sprite.height / 2 + 5, sprite.width, 10, {isSensor: true, label: 'feet'});
+    const size = {x: body.bounds.max.x - body.bounds.min.x, y: body.bounds.max.y - body.bounds.min.y};
+    const feet = scene.matter.bodies.rectangle(sprite.getCenter().x, sprite.getCenter().y + size.y / 2 + 5, size.x, 10, {isSensor: true, label: 'feet'});
     const compound = scene.matter.body.create({ parts: [feet, body], inertia: Infinity, friction: 0, frictionAir: 0, restitution: 0 });
     sprite.setExistingBody(compound);
     sprite.setOrigin(0.5, 0.5);

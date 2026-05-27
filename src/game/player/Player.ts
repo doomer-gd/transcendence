@@ -25,7 +25,6 @@ export interface IPlayerStats extends IEntityStats
 
 export class Player extends Phaser.Events.EventEmitter
 {
-  anim: Phaser.Animations.Animation;
   scene: Phaser.Scene;
   controller: PlayerController;
   mover: MoverSimple;
@@ -37,7 +36,8 @@ export class Player extends Phaser.Events.EventEmitter
     super();
     this.scene = scene;
     this.controller = new PlayerController(scene, this, 'keymap');
-    this.sprite = Constructors.constructSpriteFeet(scene, 'player', x, y);
+    this.sprite = scene.matter.add.sprite(x, y, 'player');
+    Constructors.constructSpriteFeet(scene, this.sprite);
     this.stats = Constructors.getPlaceholderStats(scene);
     this.mover = new MoverSimple(scene, this.sprite.body as MatterJS.BodyType, this.stats, this);
     console.log("Player constructed");

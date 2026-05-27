@@ -27,7 +27,6 @@ export class MoverSimple
 
   movePlayer (velocityFactor: number)
   {
-    console.log("hello");
     let newVelocity: number;
     this.stats.InputVelocity = velocityFactor;
     newVelocity = velocityFactor * this.stats.speedCurrent;
