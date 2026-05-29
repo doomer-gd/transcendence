@@ -23,8 +23,8 @@ export class TestScene extends Scene
     this.load.image('tiles', './assets/tiles/tileset1.png');
     this.load.image('lava-bg', './assets/tiles/lava-background.png');
     this.load.json('keymap', '../../config/keymap.json');
-    this.load.spritesheet('wizard_idle', './assets/animation/Idle.png', {frameWidth: 231, frameHeight: 190});
-    this.load.atlas('wizard', './assets/animation/wizard_atlas.png', './assets/animation/wizard_atals.json');
+    this.load.json('wizard_data', './assets/animation/wizard_data.json');
+    this.load.atlas('wizard_atlas', './assets/animation/wizard_atlas.png', './assets/animation/wizard_atlas.json');
 	}
 
 	create()
@@ -37,10 +37,13 @@ export class TestScene extends Scene
     this.map.getObjectLayer('boxes')?.objects.forEach((obj) => Constructors.initTileBoxes(this, obj, 'ground'));
     if (this.matter.world.walls.bottom?.label)
        this.matter.world.walls.bottom.label = 'ground';
-    this.player = new Player(this, 400, 300);
+    this.player = new Player(this, 400, 300, 'wizard');
 	}
 
-	update(time: number, delta: number): void {}
+	update(time: number, delta: number): void
+  {
+    this.player.update();
+  }
 
 
 
