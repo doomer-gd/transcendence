@@ -45,6 +45,7 @@ export class PlayerController extends Phaser.Events.EventEmitter
     this.keyMap.LEFT?.on('down', this.handleMoveKeyDown, this);
     this.keyMap.RIGHT?.on('down', this.handleMoveKeyDown, this);
     this.keyMap.JUMP?.on('down', this.handleMoveKeyDown, this);
+    this.keyMap.ATTACK?.on('down', () => {this.player.emit("attack", 1);});
     this.keyMap.LEFT?.on('up', this.handleMoveKeyUp, this);
     this.keyMap.RIGHT?.on('up', this.handleMoveKeyUp, this);
   }

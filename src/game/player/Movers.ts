@@ -1,26 +1,25 @@
 import { IPlayerStats } from "./Player";
 import { Colliders } from "../utility/Collision";
 
-
 export class MoverSimple
 {
   stats: IPlayerStats;
   body: MatterJS.BodyType;
-  controller: Phaser.Events.EventEmitter;
+  events: Phaser.Events.EventEmitter;
   scene: Phaser.Scene;
 
-  constructor(scene: Phaser.Scene, body: MatterJS.BodyType, stats: IPlayerStats, controller: Phaser.Events.EventEmitter)
+  constructor(scene: Phaser.Scene, body: MatterJS.BodyType, stats: IPlayerStats, events: Phaser.Events.EventEmitter)
   {
     this.scene = scene;
     this.body = body;
     this.stats = stats;
-    this.controller = controller;
+    this.events = events;
     this.setListeners();
   }
   setListeners()
   {
-    this.controller.on('move', (velocity: number) => this.movePlayer(velocity));
-    this.controller.on('jump', this.jumpPlayer, this);
+    this.events.on('move', (velocity: number) => this.movePlayer(velocity));
+    this.events.on('jump', this.jumpPlayer, this);
     Colliders.onCollisionCallback('collisionstart', this.scene, this.body.parts[1], this.feetHit.bind(this));
     Colliders.onCollisionCallback('collisionend', this.scene, this.body.parts[1], this.feetEndContact.bind(this));
   }
@@ -65,5 +64,4 @@ export class MoverSimple
       }
     }
   }
-
 }
