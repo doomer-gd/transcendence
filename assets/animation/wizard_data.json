@@ -1,0 +1,72 @@
+{
+  "frames":[
+          {
+            "label": "wizard_attack1",
+            "type": "attack1",
+            "prefix": "wizard_attack1_",
+            "numberFrames": 8,
+            "frameRate": 10,
+            "repeat": 0
+          },
+          {
+            "label": "wizard_fall",
+            "type": "fall",
+            "prefix": "wizard_fall_",
+            "numberFrames": 2,
+            "frameRate": 3,
+            "repeat": -1
+          },
+          {
+            "label": "wizard_hit",
+            "type": "hit",
+            "prefix": "wizard_hit_",
+            "numberFrames": 4,
+            "frameRate": 4,
+            "repeat": 0
+          },
+          {
+            "label": "wizard_idle",
+            "type": "idle",
+            "prefix": "wizard_idle_",
+            "numberFrames": 6,
+            "frameRate": 6,
+            "repeat": -1
+          },
+          {
+            "label": "wizard_jump",
+            "type": "jump",
+            "prefix": "wizard_jump_",
+            "numberFrames": 2,
+            "frameRate": 3,
+            "repeat": -1
+          },
+          {
+            "label": "wizard_run",
+            "type": "walk",
+            "prefix": "wizard_run_",
+            "numberFrames": 8,
+            "frameRate": 14,
+            "repeat": -1
+          }
+        ],
+  "physics":
+    {
+      "hitbox":
+      {
+        "height": 86,
+        "width": 57,
+        "xOffset": -4,
+        "yOffset": 10
+      }
+    },
+  "camera":
+  {
+    "size": {"height": 320, "width": 240},
+    "deadzone": {"height": 160, "width": 120},
+    "lerp": 0.7
+  },
+  "meta":
+  {
+    "atlas": "wizard_atlas.json"
+  }
+}

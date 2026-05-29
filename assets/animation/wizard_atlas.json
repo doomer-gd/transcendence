@@ -1,184 +1,727 @@
 {
-  "frames": [
-    {
-      "filename": "wizard_death",
-      "number_frames": 7,
-      "frame": {
-        "x": 1850,
-        "y": 192,
-        "w": 1617,
-        "h": 190
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1617,
-        "h": 190
-      },
-      "sourceSize": {
-        "w": 1617,
-        "h": 190
-      }
-    },
-    {
-      "filename": "wizard_fall",
-      "frame": {
-        "x": 3469,
-        "y": 192,
-        "w": 462,
-        "h": 190
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 462,
-        "h": 190
-      },
-      "sourceSize": {
-        "w": 462,
-        "h": 190
-      }
-    },
-    {
-      "filename": "wizard_hit",
-      "frame": {
-        "x": 1388,
-        "y": 384,
-        "w": 924,
-        "h": 190
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 924,
-        "h": 190
-      },
-      "sourceSize": {
-        "w": 924,
-        "h": 190
-      }
-    },
-    {
-      "filename": "wizard_idle",
-      "frame": {
-        "x": 0,
-        "y": 384,
-        "w": 1386,
-        "h": 190
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1386,
-        "h": 190
-      },
-      "sourceSize": {
-        "w": 1386,
-        "h": 190
-      }
-    },
-    {
-      "filename": "wizard_jump",
-      "frame": {
-        "x": 2314,
-        "y": 384,
-        "w": 462,
-        "h": 190
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 462,
-        "h": 190
-      },
-      "sourceSize": {
-        "w": 462,
-        "h": 190
-      }
-    },
-    {
-      "filename": "wizard_run",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 1848,
-        "h": 190
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1848,
-        "h": 190
-      },
-      "sourceSize": {
-        "w": 1848,
-        "h": 190
-      }
-    },
-    {
-      "filename": "wizard_attack1",
-      "frame": {
-        "x": 1850,
-        "y": 0,
-        "w": 1848,
-        "h": 190
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1848,
-        "h": 190
-      },
-      "sourceSize": {
-        "w": 1848,
-        "h": 190
-      }
-    },
-    {
-      "filename": "wizard_attack2",
-      "frame": {
-        "x": 0,
-        "y": 192,
-        "w": 1848,
-        "h": 190
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1848,
-        "h": 190
-      },
-      "sourceSize": {
-        "w": 1848,
-        "h": 190
-      }
-    }
-  ],
-  "meta": {
-    "app": "I Love Sprites",
-    "version": "1.0",
-    "image": "atlas.png",
-    "format": "RGBA8888",
-    "size": {
-      "width": 3931,
-      "height": 574
-    },
-    "scale": 1
-  }
+
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "wizard_attack1_0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_attack1_1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 193,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_attack1_2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 385,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_attack1_3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 577,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_attack1_4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 769,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_attack1_5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 961,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_attack1_6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 1153,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_attack1_7.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 1345,
+						"w": 231,
+						"h": 190
+					}
+				},
+        {
+          "filename": "wizard_fall_",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1,
+            "h": 1
+          },
+          "customData": {
+            "type": "fall",
+            "prefix": "wizard_fall_",
+            "numberFrames": 2,
+            "frameRate": 3,
+            "repeat": -1
+          }
+        },
+				{
+					"filename": "wizard_fall_0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 1537,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_fall_1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 1,
+						"y": 1729,
+						"w": 231,
+						"h": 190
+					}
+				},
+        {
+          "filename": "wizard_hit_",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1,
+            "h": 1
+          },
+          "customData": {
+            "type": "hit",
+            "prefix": "wizard_hit_",
+            "numberFrames": 4,
+            "frameRate": 4,
+            "repeat": 0
+          }
+        },
+				{
+					"filename": "wizard_hit_0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 1,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_hit_1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 193,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_hit_2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 385,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_hit_3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 577,
+						"w": 231,
+						"h": 190
+					}
+				},
+        {
+          "filename": "wizard_idle_",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1,
+            "h": 1
+          },
+          "customData": {
+            "type": "idle",
+            "prefix": "wizard_idle_",
+            "numberFrames": 6,
+            "frameRate": 3,
+            "repeat": -1
+          }
+        },
+				{
+					"filename": "wizard_idle_0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 769,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_idle_1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 961,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_idle_2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 1153,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_idle_3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 1345,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_idle_4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 1537,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_idle_5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 234,
+						"y": 1729,
+						"w": 231,
+						"h": 190
+					}
+				},
+        {
+          "filename": "wizard_jump_",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1,
+            "h": 1
+          },
+          "customData": {
+            "type": "jump",
+            "prefix": "wizard_jump_",
+            "numberFrames": 2,
+            "frameRate": 3,
+            "repeat": -1
+          }
+        },
+				{
+					"filename": "wizard_jump_0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 1,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_jump_1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 193,
+						"w": 231,
+						"h": 190
+					}
+				},
+        {
+          "filename": "wizard_run_",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1,
+            "h": 1
+          },
+          "customData": {
+            "type": "walk",
+            "prefix": "wizard_run_",
+            "numberFrames": 8,
+            "frameRate": 3,
+            "repeat": -1
+          }
+        },
+				{
+					"filename": "wizard_run_0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 385,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_run_1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 577,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_run_2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 769,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_run_3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 961,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_run_4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 1153,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_run_5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 1345,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_run_6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 1537,
+						"w": 231,
+						"h": 190
+					}
+				},
+				{
+					"filename": "wizard_run_7.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 231,
+						"h": 190
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 231,
+						"h": 190
+					},
+					"frame": {
+						"x": 467,
+						"y": 1729,
+						"w": 231,
+						"h": 190
+					}
+				}
+			],
+	"meta": {
+    "image": "wizard_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 699,
+				"h": 1920
+			},
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:bf51e58d81ee4de962574c372905c805:25174b6b2a4a6ef0f8c8c78a3ca4305e:3778c4c1d8eeaf8a9d9bf6f12a53fcd0$"
+	}
 }
