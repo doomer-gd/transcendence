@@ -6,7 +6,7 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "paths": {"@/*": ["src/game/*"]}
+    "paths": {"@/*": ["src/*"]}
   },
   "include": ["vite.config.ts"]
 }

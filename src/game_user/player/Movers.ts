@@ -1,5 +1,5 @@
 import { IPlayerStats } from "./Player";
-import { Colliders } from "../utility/Collision";
+import { Colliders } from "../../game_common/utility/Collision";
 
 export class MoverSimple
 {

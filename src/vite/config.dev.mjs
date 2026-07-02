@@ -7,7 +7,7 @@ export default defineConfig({
     base: './',
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, '../src/game'),
+            '@': path.resolve(__dirname, 'src'),
         },
     },
     plugins: [

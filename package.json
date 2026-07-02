@@ -24,13 +24,14 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "dev": "node log.js dev & vite --config vite/config.dev.mjs",
-    "build": "node log.js build & vite build --config vite/config.prod.mjs",
-    "dev-nolog": "vite --config vite/config.dev.mjs",
-    "build-nolog": "vite build --config vite/config.prod.mjs"
+    "dev": "vite --config src/vite/config.dev.mjs",
+    "build": "vite build --config src/vite/config.prod.mjs"
   },
   "dependencies": {
     "phaser": "4.1.0",
+    "matter-js": "^0.20.0",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

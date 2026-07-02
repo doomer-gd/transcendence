@@ -1,4 +1,4 @@
-import { IPlayerStats } from "../player/Player";
+import { IPlayerStats } from "../../game_user/player/Player";
 
 export namespace Constructors
 {

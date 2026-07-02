@@ -1,8 +1,8 @@
 import * as Phaser from 'phaser';
-import { PlayerController } from "@/player/PlayerController";
-import { Constructors } from '@/utility/Constructors';
-import { MoverSimple } from '@/player/Movers';
-import { CharacterAnimator } from '@/player/PlayerAnimator';
+import { PlayerController } from "../../game_user/player/PlayerController";
+import { Constructors } from '../../game_common/utility/Constructors';
+import { MoverSimple } from '../../game_user/player/Movers';
+import { CharacterAnimator } from '../../game_user/player/PlayerAnimator';
 import { CameraController } from './CameraFollower';
 
 export interface IEntityStats
@@ -28,6 +28,7 @@ export class Player extends Phaser.Events.EventEmitter
 {
   scene: Phaser.Scene;
   sprite: Phaser.Physics.Matter.Sprite;
+  body: MatterJS.BodyType;
   controller: PlayerController;
   mover: MoverSimple;
   animator: CharacterAnimator;

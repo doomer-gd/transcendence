@@ -1,8 +1,9 @@
 import { Player } from '../player/Player';
 import { Scene } from 'phaser';
-import { Constructors } from '../utility/Constructors';
+import { Constructors } from '../../game_common/utility/Constructors';
+import { EventBus } from '../../game_common/main/EventBus';
 
-export class TestScene extends Scene
+export class GameScene extends Scene
 {
 	background: Phaser.GameObjects.Image;
 	player:     Player;
@@ -11,7 +12,7 @@ export class TestScene extends Scene
 
 	constructor ()
 	{
-		super('TestScene');
+		super('GameScene');
 	}
 
 	preload ()
@@ -38,6 +39,7 @@ export class TestScene extends Scene
     if (this.matter.world.walls.bottom?.label)
        this.matter.world.walls.bottom.label = 'ground';
     this.player = new Player(this, 400, 300, 'wizard');
+    EventBus.emit('current-scene-ready', this);
 	}
 
 	update(time: number, delta: number): void
@@ -45,6 +47,9 @@ export class TestScene extends Scene
     this.player.update();
   }
 
-
+  changeScene ()
+  {
+    this.scene.start('GameOver');
+  }
 
 }
