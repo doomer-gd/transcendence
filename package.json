@@ -28,12 +28,12 @@
     "build": "vite build --config src/vite/config.prod.mjs"
   },
   "dependencies": {
-    "phaser": "4.1.0",
     "matter-js": "^0.20.0",
-    "socket.io": "^4.8.3",
-    "socket.io-client": "^4.8.3",
+    "phaser": "4.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
@@ -44,9 +44,9 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "terser": "^5.28.1",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
-    "vite": "^6.3.1",
-    "terser": "^5.28.1"
+    "vite": "^6.3.1"
   }
 }
