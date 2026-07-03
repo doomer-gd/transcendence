@@ -10,38 +10,42 @@ export class Match {
   private world: World;
   private runner: Runner;
   private isActive: boolean;
-  private deltaRemainder: number;
   tick: number;
-  id: number;
+  id: string;
   players: Map<string, PlayerPlaceHolder>;
 
-  constructor(id: number) {
+  constructor(id: string) {
     this.id = id;
     this.engine = Engine.create({
       gravity: { y: 3, x: 0 }
       });
     this.world = this.engine.world;
+    this.constructWorld();
     this.runner = Runner.create();
     this.players = new Map<string, PlayerPlaceHolder>();
     this.isActive = false;
     this.tick = 0;
-    this.deltaRemainder = 0;
   }
 
-  StartMatch() {
+  startMatch() {
     this.isActive = true;
   }
 
-  Update(dt: number){
-    dt += this.deltaRemainder;
-    while (dt > fixedDelta && this.isActive)
-    {
-      Runner.tick(this.runner,this.engine, fixedDelta);
-      this.tick++;
-      dt -= fixedDelta;
-      console.log("tick:", this.tick);
-    }
-    this.deltaRemainder = dt;
+  update(){
+    if (!this.isActive)
+      return ;
+    Runner.tick(this.runner,this.engine, fixedDelta);
+    this.tick++;
+    console.log("tick:", this.tick);
   }
+
+  private constructWorld(){
+
+  }
+
+  addPlayer(playerId: string){};
+  removePlayer(playerId: string){};
+
+  destroy(){ return };
 
 }
