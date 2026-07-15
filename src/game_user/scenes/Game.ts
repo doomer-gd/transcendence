@@ -20,7 +20,7 @@ export class GameScene extends Scene
 		this.load.image('background_dark', './assets/samples/bulkhead-wallsx1.png');
 		this.load.image('player', './assets/samples/witch1.png');
 		this.load.image('enemy', './assets/samples/vampire1.png');
-    this.load.tilemapTiledJSON('cave', './config/maps/cave.json');
+    this.load.tilemapTiledJSON('cave', './assets/maps/cave.json');
     this.load.image('tiles', './assets/tiles/tileset1.png');
     this.load.image('lava-bg', './assets/tiles/lava-background.png');
     this.load.json('keymap', '../../config/keymap.json');
