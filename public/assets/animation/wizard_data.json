@@ -1,4 +1,6 @@
 {
+  "label": "wizard",
+  "fileName": "./assets/animation/wizard_data.json",
   "frames":[
           {
             "label": "wizard_attack1",
@@ -56,7 +58,8 @@
         "height": 86,
         "width": 57,
         "xOffset": -4,
-        "yOffset": 10
+        "yOffset": 10,
+        "feetHeight": 10
       }
     },
   "camera":

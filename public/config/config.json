@@ -1,0 +1,14 @@
+{
+  "maps":[
+    {
+      "label": "cave",
+      "fileName": "./maps/cave.json"
+    }
+  ],
+  "characters":[
+    {
+      "label": "wizard",
+      "fileName": "./assets/animation/wizard_data.json"
+    }
+  ]
+}
