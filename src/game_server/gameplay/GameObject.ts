@@ -1,4 +1,4 @@
-import { Body } from "matter";
+import { Body } from "matter-js";
 
 
 export interface Transform
@@ -12,14 +12,12 @@ export class GameObject
   id: number;
   transform: Transform;
   label: string;
-  body?: Body;
   [key: string]: any;
 
-  constructor (id: number, transform: Transform, label: string, body?: Body)
+  constructor (id: number, transform: Transform, label: string)
   {
     this.id = id;
     this.transform = transform;
     this.label = label;
-    this.body = body;
   }
 }

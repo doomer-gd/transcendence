@@ -1,5 +1,5 @@
 import { IPlayerStats } from "../../game_user/player/Player";
-import { Bodies, Body, BodyType } from "matter";
+import { Bodies, Body } from "matter-js";
 import { Hitbox } from "../../game_server/gameplay/Player";
 
 export interface GameConstructData

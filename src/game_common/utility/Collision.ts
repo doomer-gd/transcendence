@@ -1,23 +1,21 @@
-export namespace Colliders{
+import { Body, Engine, Events} from "matter-js";
 
-  export function onCollisionCallback(
-    eventLabel: string,
-    scene: Phaser.Scene,
-    body: MatterJS.BodyType,
-    callback: (body: MatterJS.BodyType, context?: Phaser.GameObjects.GameObject) => void
-  )
-    {
-      scene.matter.world.on(eventLabel, (event: any) => checkCallback(event));
 
-      function checkCallback(data: any)
+//Calls of collision with given body
+export function onCollisionCallback(
+  eventLabel: string,
+  engine: Engine,
+  body: Body,
+  callback: (body: Body) => void)
+  {
+    Events.on(engine, eventLabel, (event: any) => {
+      for (const pair of event.pairs)
       {
-        for (const pair of data.pairs)
-        {
-          if (pair.bodyA === body)
-            callback(pair.bodyB, pair.bodyB.gameObject);
-          else if (pair.bodyB === body)
-            callback(pair.bodyA, pair.bodyA.gameObject);
-        }
+        if (pair.bodyA === body)
+          callback(pair.bodyB);
+        else if (pair.bodyB === body)
+          callback(pair.bodyA);
       }
-    }
+    })
   }
+
