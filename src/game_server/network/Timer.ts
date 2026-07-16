@@ -3,9 +3,11 @@ export class Timer
   private lastUpdateTime: number;
   private currentTime: number;
   private accumulated: number;
+  readonly fixedDelta: number;
 
-  constructor ()
+  constructor (fixedDelta: number)
   {
+    this.fixedDelta = fixedDelta;
     this.refresh();
   }
 
@@ -23,11 +25,11 @@ export class Timer
     this.lastUpdateTime = this.currentTime;
   };
 
-  checkTick(dt: number): boolean
+  checkTick(): boolean
   {
-    if (dt > this.accumulated)
+    if (this.fixedDelta > this.accumulated)
       return false;
-    this.accumulated -= dt;
+    this.accumulated -= this.fixedDelta;
     return true;
   }
 }

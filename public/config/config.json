@@ -10,5 +10,9 @@
       "label": "wizard",
       "fileName": "./assets/animation/wizard_data.json"
     }
-  ]
+  ],
+  "server":{
+    "port": 3000,
+    "fps": 60
+  }
 }

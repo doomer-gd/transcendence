@@ -1,9 +1,11 @@
 import * as Phaser from 'phaser';
 import { PlayerController } from "../../game_user/player/PlayerController";
 import { Constructors } from '../../game_common/utility/Constructors';
-import { MoverSimple } from '../../game_user/player/Movers';
+import { MoverSimple } from '../../game_common/gameplay/Mover';
 import { CharacterAnimator } from '../../game_user/player/PlayerAnimator';
 import { CameraController } from './CameraFollower';
+import { Body, Engine } from 'matter-js';
+import { EventEmitter } from 'eventemitter3'
 
 export interface IEntityStats
 {
@@ -21,7 +23,8 @@ export interface IPlayerStats extends IEntityStats
   jumpForce: number,
   canFly: boolean,
   airDamping: number,
-  InputVelocity: number
+  InputVelocity: number,
+  isReady: boolean
 }
 
 export class Player extends Phaser.Events.EventEmitter
@@ -41,10 +44,10 @@ export class Player extends Phaser.Events.EventEmitter
     this.scene = scene;
     this.controller = new PlayerController(scene, this, 'keymap');
     this.sprite = scene.matter.add.sprite(x, y, `${label}_atlas`);
-    Constructors.constructBodyByData(this.sprite, `${label}_data`);
-    Constructors.constructSpriteFeet(this.sprite);
-    this.stats = Constructors.getPlaceholderStats(scene);
-    this.mover = new MoverSimple(scene, this.sprite.body as MatterJS.BodyType, this.stats, this);
+    const hitbox = this.scene.cache.json.get('wizard_data').physics.hitbox;
+    Constructors.constructBodyWithFeet(hitbox);
+    this.stats = Constructors.getPlaceholderStats();
+    this.mover = new MoverSimple(this.sprite.body as Body, this.stats, this.scene.matter.world.engine as Engine, /*something*/);
     this.animator = new CharacterAnimator(this.sprite, this, label);
     this.camera = new CameraController(this.sprite, `${label}_data`);
     console.log("Player constructed");
