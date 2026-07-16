@@ -5,51 +5,106 @@ import * as GameServer from "."
 import { GameEvents, GameMap } from "../network/MatchManager";
 import { PlayerConfig } from "@/game_server/gameplay/Player";
 import { Server } from "socket.io";
+import { GameNetwork } from "../network/Network";
+import { PlayerInput, ServerSocket } from "@/game_common/network/Interfaces";
 
 const fixedDelta: number = 1000/60;
+
+interface MatchStatus
+{
+  readyPlayers: number,
+  isConstructed: boolean,
+  isStarted: boolean
+}
 
 
 export class Match {
   private matter: MatterData;
   readonly id: string;
   readonly characterConfig: PlayerConfig[];
-  ioSock: Server<GameEvents, GameEvents>;
-  isConstructed: boolean;
+  readonly mapConfig: any;
+  network: GameNetwork;
+  state: MatchStatus;
   playersMap: Map<string, GameServer.Player>;
 
-  constructor(id: string, mapConfig: GameMap, characters: PlayerConfig[], io: Server) {
+  constructor(id: string, mapConfig: any, characters: PlayerConfig[], network: GameNetwork) {
     this.id = id;
-    this.isConstructed = false;
-    this.ioSock = io;
+    this.state.isConstructed = false;
+    this.state.isStarted = false;
+    this.state.readyPlayers = 0;
+    this.network = network;
     this.characterConfig = characters;
-    constructServerWorld(mapConfig, this.matter, this.isConstructed);
+    this.mapConfig = mapConfig;
+    constructServerWorld(mapConfig, this.matter, this.state.isConstructed);
   }
 
-  startMatch() {
+  startMatch()
+  {
     this.matter.isActive = true;
+    this.state.isStarted = true;
+    this.network.ioSock.to(this.id).emit("gameReady");
   }
 
-  update(){
+  update(deltaTime: number){
     if (!this.matter.isActive)
       return ;
-    Runner.tick(this.matter.runner,this.matter.engine, fixedDelta);
+    Engine.update(this.matter.engine, deltaTime);
     this.matter.tick++;
     console.log("tick:", this.matter.tick);
   }
 
   addPlayer(playerId: string)
   {
-    this.ioSock.to(playerId).emit("selectHero","");
-    this.ioSock.once("selecthero", (label: string) =>
+    this.network.ioSock.to(playerId).emit("requestHero");
+    const socket = this.network.getSock(playerId);
+    if (!socket)
+      return ;
+    socket.once("selectHero", (label: string) =>
     {
-
+      const config = this.characterConfig.find((value) => value.label === label) as PlayerConfig;
+      const player = new GameServer.Player(this.matter.idLast, config, this.matter);
+      this.playersMap.set(playerId, player);
+      this.matter.idObjectMap.set(this.matter.idLast, player);
+      this.matter.idLast++;
+      this.addPlayerListen(socket, player);
+      if (this.state.isStarted)
+        socket.emit("gameReady");
     })
   };
+
   removePlayer(playerId: string)
   {
-
+    const player = this.playersMap.get(playerId);
+    if (!player)
+      return ;
+    despawnPlayer(player);
+    this.matter.idObjectMap.delete(player.id);
+    this.playersMap.delete(playerId);
   };
 
-  destroy(){ return };
+  addPlayerListen(socket: ServerSocket, player: GameServer.Player)
+  {
+    socket.on("input", (data: PlayerInput) => player.applyInput(data));
+    socket.on("playerReady", () => {
+      player.stats.isReady = true;
+      this.state.readyPlayers++;
+      if (this.state.readyPlayers >= this.mapConfig.minPlayers)
+        this.checkStartMatch();
+    })
+  }
+
+  checkStartMatch()
+  {
+    let numReady: number = 0;
+    this.playersMap.forEach((value: GameServer.Player) => {
+      if(value.stats.isReady)
+        numReady++;
+      });
+    this.state.readyPlayers = numReady;
+    if (numReady >= this.mapConfig.minPlayers)
+      this.startMatch();
+  }
+
+  destroy(){};
 
 }
