@@ -2,6 +2,8 @@ import { Player } from '../player/Player';
 import { Scene } from 'phaser';
 import { Constructors } from '../../game_common/utility/Constructors';
 import { EventBus } from '../../game_common/main/EventBus';
+import { PlayerNetwork } from '../player/PlayerNetwork';
+import { ObjectState } from '@/game_common/network/Interfaces';
 
 export class GameScene extends Scene
 {
@@ -9,10 +11,12 @@ export class GameScene extends Scene
 	player:     Player;
   playerSprite: Phaser.Physics.Arcade.Sprite;
   map: Phaser.Tilemaps.Tilemap;
+  network: PlayerNetwork;
 
 	constructor ()
 	{
 		super('GameScene');
+    this.network = new PlayerNetwork();
 	}
 
 	preload ()
@@ -40,6 +44,11 @@ export class GameScene extends Scene
        this.matter.world.walls.bottom.label = 'ground';
     this.player = new Player(this, 400, 300, 'wizard');
     EventBus.emit('current-scene-ready', this);
+    this.network.sock.emit("playerReady");
+    this.network.sock.on("snapShot", (tick: number, states: ObjectState[])=>{
+      this.player.body.position = states[0].pos;
+    })
+
 	}
 
 	update(time: number, delta: number): void
