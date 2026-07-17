@@ -15,9 +15,11 @@
   },
   "scripts": {
     "dev": "vite --config src/vite/config.dev.mjs",
-    "build": "vite build --config src/vite/config.prod.mjs"
+    "build": "vite build --config src/vite/config.prod.mjs",
+    "server": "tsx ./src/game_server/main.ts"
   },
   "dependencies": {
+    "eventemitter3": "^5.0.4",
     "matter-js": "^0.20.0",
     "phaser": "4.1.0",
     "react": "^19.0.0",
@@ -26,11 +28,12 @@
     "socket.io-client": "^4.8.3"
   },
   "devDependencies": {
+    "@types/matter-js": "^0.20.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "@types/matter-js": "^0.20.0",
     "@vitejs/plugin-react": "^4.3.4",
     "terser": "^5.28.1",
+    "tsx": "^4.23.1",
     "typescript": "~5.7.2",
     "vite": "^6.3.1"
   }
