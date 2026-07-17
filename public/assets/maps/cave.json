@@ -1,4 +1,6 @@
-{ "compressionlevel":-1,
+{
+  "label": "cave",
+  "compressionlevel":-1,
  "editorsettings":
     {
      "export":
@@ -174,5 +176,6 @@
  "tilewidth":32,
  "type":"map",
  "version":"1.10",
- "width":32
+ "width":32,
+ "minPlayers":1
 }

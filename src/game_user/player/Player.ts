@@ -4,8 +4,6 @@ import { Constructors } from '../../game_common/utility/Constructors';
 import { MoverSimple } from '../../game_common/gameplay/Mover';
 import { CharacterAnimator } from '../../game_user/player/PlayerAnimator';
 import { CameraController } from './CameraFollower';
-import { Body, Engine } from 'matter-js';
-import { EventEmitter } from 'eventemitter3'
 
 export interface IEntityStats
 {
@@ -47,7 +45,6 @@ export class Player extends Phaser.Events.EventEmitter
     const hitbox = this.scene.cache.json.get('wizard_data').physics.hitbox;
     Constructors.constructBodyWithFeet(hitbox);
     this.stats = Constructors.getPlaceholderStats();
-    this.mover = new MoverSimple(this.sprite.body as Body, this.stats, this.scene.matter.world.engine as Engine, /*something*/);
     this.animator = new CharacterAnimator(this.sprite, this, label);
     this.camera = new CameraController(this.sprite, `${label}_data`);
     console.log("Player constructed");

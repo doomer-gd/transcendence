@@ -26,6 +26,7 @@ const config: Phaser.Types.Core.GameConfig = {
     default: 'matter',
     matter: {
       gravity: { y: 3, x: 0 },
+      autoUpdate: false,
       runner: {
         fps:60
       },
