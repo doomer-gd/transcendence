@@ -1,14 +1,9 @@
-import Matter, { Engine, World, Bodies, Body, Runner} from "matter-js";
-import { Constructors, GameConstructData } from "@/game_common/utility/Constructors";
+import { Composite, Engine} from "matter-js";
 import { constructServerWorld, MatterData } from "../utils/WorldConstructor";
 import * as GameServer from "."
-import { GameEvents, GameMap } from "../network/MatchManager";
 import { PlayerConfig } from "@/game_server/gameplay/Player";
-import { Server } from "socket.io";
 import { GameNetwork } from "../network/Network";
 import { PlayerInput, ServerSocket } from "@/game_common/network/Interfaces";
-
-const fixedDelta: number = 1000/60;
 
 interface MatchStatus
 {
@@ -36,6 +31,7 @@ export class Match {
     this.characterConfig = characters;
     this.mapConfig = mapConfig;
     constructServerWorld(mapConfig, this.matter, this.state.isConstructed);
+    console.log("hi");
   }
 
   startMatch()
@@ -50,6 +46,9 @@ export class Match {
       return ;
     Engine.update(this.matter.engine, deltaTime);
     this.matter.tick++;
+    this.playersMap.forEach((value: GameServer.Player, key: string)=>{
+      this.network.ioSock.to(key).emit("snapShot", this.matter.tick, [{id: value.id, pos: {x: value.body.position.x, y: value.body.position.y}}]);
+    })
     console.log("tick:", this.matter.tick);
   }
 
@@ -77,7 +76,6 @@ export class Match {
     const player = this.playersMap.get(playerId);
     if (!player)
       return ;
-    despawnPlayer(player);
     this.matter.idObjectMap.delete(player.id);
     this.playersMap.delete(playerId);
   };
@@ -85,16 +83,25 @@ export class Match {
   addPlayerListen(socket: ServerSocket, player: GameServer.Player)
   {
     socket.on("input", (data: PlayerInput) => player.applyInput(data));
-    socket.on("playerReady", () => {
+    socket.once("playerReady", () => {
       player.stats.isReady = true;
       this.state.readyPlayers++;
-      if (this.state.readyPlayers >= this.mapConfig.minPlayers)
+      if (!this.state.isStarted &&
+          (this.state.readyPlayers >= this.mapConfig.minPlayers))
         this.checkStartMatch();
     })
   }
 
+  spawnPlayer(player: GameServer.Player)
+  {
+    player.body.position = {x: 300, y: 400};
+    Composite.add(this.matter.world, player.body);
+  }
+
   checkStartMatch()
   {
+    if (this.state.isStarted)
+      return ;
     let numReady: number = 0;
     this.playersMap.forEach((value: GameServer.Player) => {
       if(value.stats.isReady)

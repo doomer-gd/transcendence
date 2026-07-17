@@ -42,7 +42,7 @@ export class Player extends GameObject
     this.events = new EventEmitter;
     this.body = Constructors.constructBodyWithFeet(config.hitbox);
     this.body.plugin.gameObject = this;
-    this.controller = new MoverSimple(this.body, this.stats, this.matter, this.events);
+    this.controller = new MoverSimple(this.body, this.stats, this.matter.engine, this.events);
   }
 
   applyInput(input: PlayerInput)

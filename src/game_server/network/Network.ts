@@ -3,7 +3,7 @@ import { createServer } from "http";
 import path from "path";
 import { Server, Socket } from "socket.io";
 
-export const PUBLIC_FOLDER = path.resolve("./public");
+
 
 export class GameNetwork
 {

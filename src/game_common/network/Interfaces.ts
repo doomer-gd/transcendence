@@ -8,19 +8,37 @@ export interface PlayerInput
   action?: number
 }
 
+export interface ObjectState {
+  id: number,
+  pos: {x: number, y: number},
+  [key: string]: any
+}
+
+export interface MatchData {
+  id: string,
+  plCur: number,
+  plMax: number,
+  isReady: boolean
+}
+
 export interface GameServerEvents
 {
   gameReady: () => void,
   requestHero: () => void,
   playerDied: (playerId: string) => void,
-  playerSpawn: (playerId: string, data: any) => void
+  playerSpawn: (playerId: string, data: any) => void,
+  snapShot: (tick: number, items: ObjectState[]) => void,
+  matchList: (matches: MatchData[]) => void
 }
 
 export interface GameClientEvents
 {
   selectHero: (label: string) => void,
   input: (data: PlayerInput) => void,
-  playerReady: () => void
+  playerReady: () => void,
+  requestMatches: () => void,
+  joinMatch: (matchId: string) => void,
+  leaveMatch: () => void
 }
 
 export type GameServer = Server<GameClientEvents, GameServerEvents>;

@@ -1,7 +1,6 @@
 import * as GameServer from "@/game_server/gameplay";
 import { Constructors, GameConstructData, GameObjectType } from "@/game_common/utility/Constructors";
-import { Engine, World, Bodies, Body, Runner, Composite } from "matter-js";
-
+import { Engine, World, Bodies, Body, Composite } from "matter-js";
 export interface MatterData
 {
   engine: Engine,
@@ -19,6 +18,7 @@ const mapTypeConstructor = new Map<GameObjectType, (arg: GameConstructData, id:n
 
 export async function constructServerWorld(worldConfig: any, matter: MatterData, isDone: boolean)
 {
+  console.log("world construction");
   initializeMatter(worldConfig, matter);
   const constructs = Constructors.getWolrdObjects(worldConfig);
   constructs.forEach((obj: GameConstructData) => {
@@ -32,6 +32,7 @@ export async function constructServerWorld(worldConfig: any, matter: MatterData,
     matter.idLast++;
   })
   isDone = true;
+  console.log("match created");
 }
 
 function initializeMatter(worldConfig: any, matter: MatterData)
