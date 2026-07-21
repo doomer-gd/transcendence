@@ -3,7 +3,7 @@ import { Scene } from 'phaser';
 import { Constructors } from '../../game_common/utility/Constructors';
 import { EventBus } from '../../game_common/main/EventBus';
 import { PlayerNetwork } from '../player/PlayerNetwork';
-import { ObjectState } from '@/game_common/network/Interfaces';
+import { MatchData, ObjectState } from '../../game_common/network/Interfaces';
 
 export class GameScene extends Scene
 {
@@ -16,7 +16,6 @@ export class GameScene extends Scene
 	constructor ()
 	{
 		super('GameScene');
-    this.network = new PlayerNetwork();
 	}
 
 	preload ()
@@ -43,9 +42,12 @@ export class GameScene extends Scene
     if (this.matter.world.walls.bottom?.label)
        this.matter.world.walls.bottom.label = 'ground';
     this.player = new Player(this, 400, 300, 'wizard');
+    this.network = this.player.network;
     EventBus.emit('current-scene-ready', this);
-    this.network.sock.emit("playerReady");
+    this.network.sock.emit("requestMatches");
+    this.network.sock.once("matchList", (data: MatchData[]) => this.network.sock.emit("joinMatch", data[0].id));
     this.network.sock.on("snapShot", (tick: number, states: ObjectState[])=>{
+      console.log("snapshot", states[0]);
       this.player.body.position = states[0].pos;
     })
 

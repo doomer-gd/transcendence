@@ -11,6 +11,13 @@ interface KeyMap
 	ATTACK: Phaser.Input.Keyboard.Key | undefined
 }
 
+export interface InputEvents
+{
+  move: (dir: number) => void,
+  jump: () => void,
+  action: (type: number) => void
+}
+
 
 export class PlayerController extends Phaser.Events.EventEmitter
 {
