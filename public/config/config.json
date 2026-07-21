@@ -2,13 +2,13 @@
   "maps":[
     {
       "label": "cave",
-      "fileName": "./maps/cave.json"
+      "fileName": "/assets/maps/cave.json"
     }
   ],
   "characters":[
     {
       "label": "wizard",
-      "fileName": "./assets/animation/wizard_data.json"
+      "fileName": "/assets/animation/wizard_data.json"
     }
   ],
   "server":{

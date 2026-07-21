@@ -51,7 +51,7 @@
             "repeat": -1
           }
         ],
-  "physics":
+  "gameplay":
     {
       "hitbox":
       {

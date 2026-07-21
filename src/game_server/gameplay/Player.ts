@@ -1,11 +1,11 @@
-import { GameObject, Transform } from "@/game_server/gameplay/GameObject";
+import { GameObject, Transform } from "./GameObject";
 import { Body } from "matter-js";
-import { IPlayerStats } from "@/game_user/player/Player";
+import { IPlayerStats } from "../../game_user/player/Player";
 import { EventEmitter } from 'eventemitter3'
 import { Constructors } from "../../game_common/utility/Constructors";
-import { MoverSimple } from "@/game_common/gameplay/Mover";
+import { MoverSimple } from "../../game_common/gameplay/Mover";
 import { MatterData } from "../utils/WorldConstructor";
-import { PlayerInput } from "@/game_common/network/Interfaces";
+import { PlayerInput } from "../../game_common/network/Interfaces";
 
 export interface Hitbox
 {
@@ -34,9 +34,9 @@ export class Player extends GameObject
   matter: MatterData;
   controller: MoverSimple; //playermover class
 
-  constructor(id: number, config: PlayerConfig, matter: MatterData)
+  constructor(matter: MatterData, config: PlayerConfig)
   {
-    super(id,{x:0, y:0}, config.label);
+    super(matter.idLast,{x:0, y:0}, config.label);
     this.stats = config.stats ?? Constructors.getPlaceholderStats();
     this.matter = matter;
     this.events = new EventEmitter;
@@ -47,6 +47,7 @@ export class Player extends GameObject
 
   applyInput(input: PlayerInput)
   {
+    console.log("input recieved", input);
     if (input.x)
       this.controller.movePlayer(input.x);
     if (input.jump)

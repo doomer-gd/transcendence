@@ -41,6 +41,12 @@ export interface GameClientEvents
   leaveMatch: () => void
 }
 
+export interface ManagerEvents
+{
+  matchReady: (id: string) => void,
+  matchEnded: (id: string) => void
+}
+
 export type GameServer = Server<GameClientEvents, GameServerEvents>;
 export type ServerSocket = Socket<GameClientEvents, GameServerEvents>;
 export type PlayerSocket = ClientSocket<GameServerEvents, GameClientEvents>;
