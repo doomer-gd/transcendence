@@ -48,20 +48,18 @@ export namespace Constructors
   {
     const body = Bodies.rectangle(0, 0, hitbox.width, hitbox.height, hitbox.options);
     const size = {x: body.bounds.max.x - body.bounds.min.x, y: body.bounds.max.y - body.bounds.min.y};
-    const feet = Bodies.rectangle(0, size.y / 2 + hitbox.feetHeight, size.x - 2, hitbox.feetHeight, {isSensor: true, label: 'feet'});
+    const feet = Bodies.rectangle(0, size.y / 2 + hitbox.feetHeight / 2, size.x - 2, hitbox.feetHeight, {isSensor: true, label: 'feet'});
     const compound = Body.create({ parts: [body, feet], ...hitbox.options });
     return compound;
   }
 
-  export function constructSpriteFeet(sprite: Phaser.Physics.Matter.Sprite): Phaser.Physics.Matter.Sprite
+  export function constructPhaserBody(scene: Phaser.Scene, hitbox: Hitbox): MatterJS.BodyType
   {
-    const body = sprite.body as MatterJS.BodyType;
+    const body = scene.matter.bodies.rectangle(0, 0, hitbox.width, hitbox.height, hitbox.options)
     const size = {x: body.bounds.max.x - body.bounds.min.x, y: body.bounds.max.y - body.bounds.min.y};
-    const feet = sprite.scene.matter.bodies.rectangle(sprite.getCenter().x, sprite.getCenter().y + size.y / 2 + 5, size.x - 4, 10, {isSensor: true, label: 'feet'});
-    const compound = sprite.scene.matter.body.create({ parts: [feet, body], inertia: Infinity, friction: 0, frictionAir: 0, restitution: 0 });
-    sprite.setExistingBody(compound);
-    sprite.setOrigin(0.5, 0.5);
-    return sprite;
+    const feet = scene.matter.bodies.rectangle(0, size.y / 2 + hitbox.feetHeight / 2, size.x - 2, hitbox.feetHeight, {isSensor: true, label: 'feet'});
+    const compound = scene.matter.body.create({ parts: [body, feet], ...hitbox.options});
+    return compound;
   }
 
   export function getPlaceholderStats (): IPlayerStats
@@ -77,7 +75,8 @@ export namespace Constructors
       jumpForce: 60,
       isOnGround: false,
       groundContacts: 0,
-      facing: 1
+      facing: 1,
+      isReady: false
     }
     return stats;
   }

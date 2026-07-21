@@ -1,5 +1,5 @@
-import * as GameServer from "@/game_server/gameplay";
-import { Constructors, GameConstructData, GameObjectType } from "@/game_common/utility/Constructors";
+import * as GameServer from "../gameplay";
+import { Constructors, GameConstructData, GameObjectType } from "../../game_common/utility/Constructors";
 import { Engine, World, Bodies, Body, Composite } from "matter-js";
 export interface MatterData
 {
@@ -16,10 +16,9 @@ const mapTypeConstructor = new Map<GameObjectType, (arg: GameConstructData, id:n
   [GameObjectType.staticObstacle, addStaticObject]
 ])
 
-export async function constructServerWorld(worldConfig: any, matter: MatterData, isDone: boolean)
+export async function constructServerWorld(worldConfig: any): Promise<MatterData>
 {
-  console.log("world construction");
-  initializeMatter(worldConfig, matter);
+  var matter = initializeMatter(worldConfig);
   const constructs = Constructors.getWolrdObjects(worldConfig);
   constructs.forEach((obj: GameConstructData) => {
     const construtorFunc = mapTypeConstructor.get(obj.type);
@@ -31,19 +30,22 @@ export async function constructServerWorld(worldConfig: any, matter: MatterData,
     matter.idObjectMap.set(matter.idLast, newObject);
     matter.idLast++;
   })
-  isDone = true;
   console.log("match created");
+  return matter;
 }
 
-function initializeMatter(worldConfig: any, matter: MatterData)
+function initializeMatter(worldConfig: any): MatterData
 {
-  matter.engine = Engine.create(worldConfig.physics ?? { gravity: { y: 3, x: 0 } });
-  matter.world = matter.engine.world;
-  matter.tick = 0;
-  matter.isActive = false;
-  matter.idLast = 0;
+  const partMatter: Partial<MatterData> = {};
+  partMatter.engine = Engine.create(worldConfig.physics ?? { gravity: { y: 3, x: 0 } });
+  partMatter.world = partMatter.engine.world;
+  partMatter.tick = 0;
+  partMatter.isActive = false;
+  partMatter.idLast = 0;
+  partMatter.idObjectMap = new Map<number, GameServer.GameObject>;
   if (!worldConfig.minPlayers)
     worldConfig.minPlayers = 1;
+  return partMatter as MatterData;
 }
 
 

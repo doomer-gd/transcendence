@@ -1,9 +1,14 @@
 import { Composite, Engine} from "matter-js";
 import { constructServerWorld, MatterData } from "../utils/WorldConstructor";
 import * as GameServer from "."
-import { PlayerConfig } from "@/game_server/gameplay/Player";
+import { PlayerConfig } from "./Player";
 import { GameNetwork } from "../network/Network";
-import { PlayerInput, ServerSocket } from "@/game_common/network/Interfaces";
+import { ManagerEvents, PlayerInput, ServerSocket } from "../../game_common/network/Interfaces";
+import EventEmitter from "eventemitter3";
+import { Timer } from "../../game_common/gameplay/Timer";
+import { GameConstructData } from "../network/MatchManager";
+import { DF_FPS } from "../network/MatchManager"
+import { DebugRender } from "../debug/Render";
 
 interface MatchStatus
 {
@@ -12,44 +17,55 @@ interface MatchStatus
   isStarted: boolean
 }
 
-
 export class Match {
   private matter: MatterData;
+  private timer: Timer;
   readonly id: string;
   readonly characterConfig: PlayerConfig[];
   readonly mapConfig: any;
   network: GameNetwork;
+  events: EventEmitter<ManagerEvents>;
   state: MatchStatus;
   playersMap: Map<string, GameServer.Player>;
+  debugRender: DebugRender; //debug
 
-  constructor(id: string, mapConfig: any, characters: PlayerConfig[], network: GameNetwork) {
+  constructor(id: string, mapConfig: any, config: GameConstructData, network: GameNetwork, events: EventEmitter<ManagerEvents>) {
     this.id = id;
-    this.state.isConstructed = false;
-    this.state.isStarted = false;
-    this.state.readyPlayers = 0;
+    this.state = {readyPlayers: 0, isConstructed: false, isStarted: false} as MatchStatus;
     this.network = network;
-    this.characterConfig = characters;
+    this.events = events;
+    this.playersMap = new Map<string, GameServer.Player>();
+    this.timer = new Timer(1000 / (config.server.fps ?? DF_FPS));
+    this.characterConfig = config.characters;
     this.mapConfig = mapConfig;
-    constructServerWorld(mapConfig, this.matter, this.state.isConstructed);
-    console.log("hi");
+    constructServerWorld(mapConfig).then((value: MatterData) => {
+      this.matter = value;
+      this.debugRender = new DebugRender(this.matter.engine);
+      this.state.isConstructed = true;
+    });
   }
 
   startMatch()
   {
     this.matter.isActive = true;
     this.state.isStarted = true;
+    console.log("match started");
+    this.timer.refresh();
     this.network.ioSock.to(this.id).emit("gameReady");
   }
 
-  update(deltaTime: number){
-    if (!this.matter.isActive)
+  update(){
+    if (!this.state.isConstructed || !this.matter.isActive)
       return ;
-    Engine.update(this.matter.engine, deltaTime);
-    this.matter.tick++;
-    this.playersMap.forEach((value: GameServer.Player, key: string)=>{
-      this.network.ioSock.to(key).emit("snapShot", this.matter.tick, [{id: value.id, pos: {x: value.body.position.x, y: value.body.position.y}}]);
-    })
-    console.log("tick:", this.matter.tick);
+    this.timer.updateDeltaTime();
+    while (this.timer.checkTick())
+    {
+      Engine.update(this.matter.engine, this.timer.fixedDelta);
+      this.playersMap.forEach((value: GameServer.Player, key: string)=>{
+        this.network.ioSock.to(key).emit("snapShot", this.matter.tick, [{id: value.id, pos: {x: value.body.position.x, y: value.body.position.y}}]);
+      })
+      this.matter.tick++;
+    }
   }
 
   addPlayer(playerId: string)
@@ -61,7 +77,7 @@ export class Match {
     socket.once("selectHero", (label: string) =>
     {
       const config = this.characterConfig.find((value) => value.label === label) as PlayerConfig;
-      const player = new GameServer.Player(this.matter.idLast, config, this.matter);
+      const player = new GameServer.Player(this.matter, config);
       this.playersMap.set(playerId, player);
       this.matter.idObjectMap.set(this.matter.idLast, player);
       this.matter.idLast++;
@@ -84,6 +100,7 @@ export class Match {
   {
     socket.on("input", (data: PlayerInput) => player.applyInput(data));
     socket.once("playerReady", () => {
+      console.log("player ready recieved");
       player.stats.isReady = true;
       this.state.readyPlayers++;
       if (!this.state.isStarted &&
@@ -110,6 +127,36 @@ export class Match {
     this.state.readyPlayers = numReady;
     if (numReady >= this.mapConfig.minPlayers)
       this.startMatch();
+  }
+
+  pauseMatch()
+  {
+    this.matter.isActive = false;
+  }
+
+  unpauseMatch()
+  {
+    this.matter.isActive = true;
+    this.timer.refresh();
+  }
+
+  getDebugSnapshot()
+  {
+    if (!this.matter?.world?.bodies)
+      return [];
+
+    return this.matter.world.bodies.map((body: any) => ({
+      id: body.plugin?.gameObject?.id ?? body.id,
+      label: body.label ?? "body",
+      x: body.position.x,
+      y: body.position.y,
+      angle: body.angle,
+      width: body.bounds.max.x - body.bounds.min.x,
+      height: body.bounds.max.y - body.bounds.min.y,
+      radius: body.circleRadius ?? 0,
+      isStatic: Boolean(body.isStatic),
+      isSensor: Boolean(body.isSensor)
+    }));
   }
 
   destroy(){};

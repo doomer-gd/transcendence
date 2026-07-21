@@ -1,15 +1,14 @@
 import { randomUUID } from 'crypto';
 import { Match } from '../gameplay/Match';
-import { Timer } from './Timer';
-import { PlayerConfig } from '@/game_server/gameplay/Player';
+import { Hitbox, PlayerConfig } from '../gameplay/Player';
 import { existsSync, readFileSync } from 'fs';
 import { GameNetwork } from './Network';
 import path from 'path';
 import EventEmitter from 'eventemitter3';
-import { MatchData, ServerSocket } from '@/game_common/network/Interfaces';
+import { ManagerEvents, MatchData, ServerSocket } from '../../game_common/network/Interfaces';
 
-const DF_PORT: number = 3000;
-const DF_FRAME_TIME: number = 1000/60;
+export const DF_PORT: number = 3000;
+export const DF_FPS: number = 60;
 export const PUBLIC_FOLDER = path.resolve("./public");
 
 export interface GameConstructData
@@ -30,9 +29,8 @@ export class MatchManager{
   private network: GameNetwork;
   private matches: Map<string, Match>;
   private playerMatch: Map<string, string>;
-  private timer: Timer;
   private config: GameConstructData;
-  events: EventEmitter;
+  events: EventEmitter<ManagerEvents>;
 
   constructor ()
   {
@@ -41,7 +39,6 @@ export class MatchManager{
     this.network = new GameNetwork(this.config.server.port ?? DF_PORT);
     this.matches = new Map<string, Match>();
     this.playerMatch = new Map<string, string>();
-    this.timer = new Timer(this.config.server.frameTime ?? DF_FRAME_TIME);
     this.createMatch("cave"); // placeholder
     this.network.ioSock.on("connect", (socket: ServerSocket) =>{
       socket.on("requestMatches", () => this.sendMatchList(socket));
@@ -56,11 +53,10 @@ export class MatchManager{
   createMatch(label: string)
   {
     const mapConfig = this.config.maps.find((value) => value.label === label);
-    console.log(mapConfig);
     if (!mapConfig)
       return false;
     const matchId: string = randomUUID();
-    const match = new Match(matchId, mapConfig.worldConfig, this.config.characters, this.network);
+    const match = new Match(matchId, mapConfig.worldConfig, this.config, this.network, this.events);
     this.matches.set(matchId, match);
   }
 
@@ -69,26 +65,24 @@ export class MatchManager{
     const match = this.matches.get(matchId);
     if (!match)
       return ;
-    match.playersMap.forEach((player, key: string) => {this.playerMatch.delete(key)}, this);
+    match.playersMap.forEach((player, key: string) => this.playerMatch.delete(key));
     match.destroy();
     this.matches.delete(matchId);
-    //set each player's matchId to 0
   }
 
   runMatches()
   {
-    this.timer.updateDeltaTime();
-    while (this.timer.checkTick())
-    {
-      this.matches.forEach((value: Match) => {value.update(this.timer.fixedDelta)});
-    }
+    this.matches.forEach((value: Match) => {value.update()});
   }
 
   joinMatch(playerId: string, matchId: string): boolean
   {
     const match = this.matches.get(matchId);
-    if (!match)
+    if (!match || !match.state.isConstructed)
+    {
+      console.log("join failed");
       return false;
+    }
     if (this.playerMatch.get(playerId))
       return false;
     match.addPlayer(playerId);
@@ -130,24 +124,24 @@ export class MatchManager{
     if (!existsSync(configFileName))
       throw new Error("Couldn't read game config file.")
     var confString = readFileSync(configFileName, "utf-8");
-    const meta = JSON.parse(confString);
-    meta.maps.forEach((label: string, fileName:string) =>
+    this.config = JSON.parse(confString) as GameConstructData;
+    this.config.maps.forEach((map: GameMap) =>
     {
-      if (!existsSync(PUBLIC_FOLDER + fileName))
+      if (!existsSync(PUBLIC_FOLDER + map.fileName))
         return ;
-      confString = readFileSync(PUBLIC_FOLDER + fileName, "utf-8");
-      this.config.maps.push(JSON.parse(confString));
+      confString = readFileSync(PUBLIC_FOLDER + map.fileName, "utf-8");
+      map.worldConfig = JSON.parse(confString);
     })
-    meta.characters.forEach((label: string, fileName:string) =>
+    this.config.characters.forEach((char: PlayerConfig) =>
     {
-      if (!existsSync(PUBLIC_FOLDER + fileName))
+      if (!existsSync(PUBLIC_FOLDER + char.fileName))
         return ;
-      confString = readFileSync(PUBLIC_FOLDER + fileName, "utf-8");
-      this.config.characters.push(JSON.parse(confString));
+      confString = readFileSync(PUBLIC_FOLDER + char.fileName, "utf-8");
+      const charConf = JSON.parse(confString);
+      char.frames = charConf.frames;
+      char.hitbox = charConf.gameplay.hitbox as Hitbox;
     })
-    this.config.server = meta.server;
+    this.config.server = this.config.server;
     this.config.server.frameTime = 1000 / (this.config.server.fps ?? 60);
-    console.log("maps:", this.config.maps.length);
-    console.log("chars:", this.config.characters.length);
   }
 }

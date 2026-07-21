@@ -1,4 +1,4 @@
-import { GameServer, ServerSocket } from "@/game_common/network/Interfaces";
+import { GameServer, ServerSocket } from "../../game_common/network/Interfaces";
 import { createServer } from "http";
 import path from "path";
 import { Server, Socket } from "socket.io";
@@ -29,7 +29,7 @@ export class GameNetwork
 
   private setUpListen()
   {
-    this.ioSock.on("connection", (socket) => {
+    this.ioSock.on("connect", (socket) => {
       this.sockMap.set(socket.id, socket);
       console.log(socket.id, "joined");
 

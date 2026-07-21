@@ -4,17 +4,17 @@ import { GameNetwork } from "./network/Network"
 
 
 const manager = new MatchManager();
+const sleep = (time: number) => new Promise(resolve => setTimeout(resolve, time));
 
-const StartServer = () =>
+export async function StartServer(): Promise<void>
 {
+  const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
   while (42 === 42)
   {
     manager.runMatches();
-    sleep(2);
+    await sleep(10);
   }
 }
 
-function sleep(time: number): Promise<void>
-{
-  return new Promise(resolve => setTimeout(resolve, time));
-}
+StartServer();
+
