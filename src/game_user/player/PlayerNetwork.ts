@@ -1,3 +1,4 @@
+import type * as Phaser from "phaser";
 import { PlayerSocket } from "../../game_common/network/Interfaces";
 import { io } from "socket.io-client";
 

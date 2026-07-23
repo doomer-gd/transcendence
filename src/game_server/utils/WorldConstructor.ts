@@ -1,6 +1,7 @@
 import * as GameServer from "../gameplay";
-import { Constructors, GameConstructData, GameObjectType } from "../../game_common/utility/Constructors";
+import { CollisionTypes, Constructors, ObjectConstructData, GameObjectType } from "../../game_common/utility/Constructors";
 import { Engine, World, Bodies, Body, Composite } from "matter-js";
+
 export interface MatterData
 {
   engine: Engine,
@@ -11,7 +12,7 @@ export interface MatterData
   idLast: number
 }
 
-const mapTypeConstructor = new Map<GameObjectType, (arg: GameConstructData, id:number) => GameServer.GameObject>(
+const mapTypeConstructor = new Map<GameObjectType, (arg: ObjectConstructData, id:number) => GameServer.GameObject>(
 [
   [GameObjectType.staticObstacle, addStaticObject]
 ])
@@ -20,7 +21,7 @@ export async function constructServerWorld(worldConfig: any): Promise<MatterData
 {
   var matter = initializeMatter(worldConfig);
   const constructs = Constructors.getWolrdObjects(worldConfig);
-  constructs.forEach((obj: GameConstructData) => {
+  constructs.forEach((obj: ObjectConstructData) => {
     const construtorFunc = mapTypeConstructor.get(obj.type);
     if (!construtorFunc)
       return;
@@ -49,17 +50,19 @@ function initializeMatter(worldConfig: any): MatterData
 }
 
 
-function addStaticObject(config: GameConstructData, id: number)
+function addStaticObject(config: ObjectConstructData, id: number)
 {
   var body: Body | undefined = undefined;
   if (config.radius)
-    body = Bodies.circle(config.x, config.y, config.radius, config.physicsProps);
+    body = Bodies.circle(config.x + config.radius / 2, config.y + config.radius / 2, config.radius, {isStatic: true, ...config.physicsProps});
   if (config.width && config.height)
-    body = Bodies.rectangle(config.x, config.y, config.width, config.height, config.physicsProps);
-  const gameobject= new GameServer.GameObject(id, {x: config.x, y: config.y}, config.label, body);
+    body = Bodies.rectangle(config.x + config.width / 2, config.y + config.y / 2, config.width, config.height, {isStatic: true, ...config.physicsProps});
+  const gameobject = new GameServer.GameObject(id, {x: config.x, y: config.y}, config.label);
   if (body)
   {
+    gameobject.body = body;
     body.plugin.gameObject = gameobject;
+    body.collisionFilter = {category: CollisionTypes.solid, mask: CollisionTypes.player};
     body.label = 'ground';
   }
   return gameobject;

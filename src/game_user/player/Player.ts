@@ -1,10 +1,9 @@
 import * as Phaser from 'phaser';
 import { PlayerController } from "../../game_user/player/PlayerController";
-import { Constructors } from '../../game_common/utility/Constructors';
+import { Constructors, Hitbox } from '../../game_common/utility/Constructors';
 import { MoverSimple } from '../../game_common/gameplay/Mover';
 import { CharacterAnimator } from '../../game_user/player/PlayerAnimator';
 import { CameraController } from './CameraFollower';
-import { Hitbox } from '../../game_server/gameplay/Player';
 import { PlayerNetwork } from './PlayerNetwork';
 
 export interface IEntityStats
@@ -47,9 +46,8 @@ export class Player extends Phaser.Events.EventEmitter
     this.sprite = scene.matter.add.sprite(x, y, `${label}_atlas`);
     const hitbox = this.scene.cache.json.get('wizard_data').gameplay.hitbox as Hitbox;
     const body = Constructors.constructPhaserBody(this.scene, hitbox);
-    body.position = {x:x, y:y};
-    body.velocity = {x:0, y:0};
     this.sprite.setExistingBody(body);
+    this.sprite.setOrigin(0.5, 0.5);
     this.body = body;
     this.stats = Constructors.getPlaceholderStats();
     this.animator = new CharacterAnimator(this.sprite, this, label);

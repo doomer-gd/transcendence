@@ -22,8 +22,8 @@ export class MoverSimple
 
   setListeners()
   {
-    Colliders.onCollisionCallback('collisionstart', this.engine, this.body.parts[1], this.feetHit.bind(this));
-    Colliders.onCollisionCallback('collisionend', this.engine, this.body.parts[1], this.feetEndContact.bind(this));
+    Colliders.onCollisionCallback('collisionStart', this.engine, this.body.parts[1], this.feetHit.bind(this));
+    Colliders.onCollisionCallback('collisionEnd', this.engine, this.body.parts[1], this.feetEndContact.bind(this));
   }
 
   movePlayer (velocityFactor: number)

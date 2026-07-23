@@ -41,14 +41,15 @@ export class GameScene extends Scene
     this.map.getObjectLayer('boxes')?.objects.forEach((obj) => Constructors.initTileBoxes(this, obj, 'ground'));
     if (this.matter.world.walls.bottom?.label)
        this.matter.world.walls.bottom.label = 'ground';
-    this.player = new Player(this, 400, 300, 'wizard');
+    this.player = new Player(this, 300, 400, 'wizard');
     this.network = this.player.network;
     EventBus.emit('current-scene-ready', this);
     this.network.sock.emit("requestMatches");
     this.network.sock.once("matchList", (data: MatchData[]) => this.network.sock.emit("joinMatch", data[0].id));
     this.network.sock.on("snapShot", (tick: number, states: ObjectState[])=>{
-      console.log("snapshot", states[0]);
-      this.player.body.position = states[0].pos;
+      console.log("snapshot", states);
+      console.log("local bods", this.matter.world.getAllBodies());
+      this.matter.body.setPosition(this.player.body, states[6].pos, false);
     })
 
 	}

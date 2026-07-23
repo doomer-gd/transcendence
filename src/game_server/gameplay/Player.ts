@@ -1,21 +1,11 @@
-import { GameObject, Transform } from "./GameObject";
+import { GameObject } from "./GameObject";
 import { Body } from "matter-js";
 import { IPlayerStats } from "../../game_user/player/Player";
 import { EventEmitter } from 'eventemitter3'
-import { Constructors } from "../../game_common/utility/Constructors";
+import { Constructors, Hitbox } from "../../game_common/utility/Constructors";
 import { MoverSimple } from "../../game_common/gameplay/Mover";
 import { MatterData } from "../utils/WorldConstructor";
 import { PlayerInput } from "../../game_common/network/Interfaces";
-
-export interface Hitbox
-{
-  height: number,
-  width: number,
-  xOffset: number,
-  yOffset: number,
-  feetHeight: number,
-  options?: any
-}
 
 export interface PlayerConfig
 {
@@ -54,5 +44,15 @@ export class Player extends GameObject
       this.controller.jumpPlayer();
     if (input.action)
       this.controller.actionPlayer(input.action);
+  }
+
+  setListen()
+  {
+    
+  }
+
+  update()
+  {
+
   }
 }

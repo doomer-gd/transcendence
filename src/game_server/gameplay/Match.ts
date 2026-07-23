@@ -1,4 +1,4 @@
-import { Composite, Engine} from "matter-js";
+import { Body, Collision, Composite, Engine, Events, World} from "matter-js";
 import { constructServerWorld, MatterData } from "../utils/WorldConstructor";
 import * as GameServer from "."
 import { PlayerConfig } from "./Player";
@@ -27,7 +27,6 @@ export class Match {
   events: EventEmitter<ManagerEvents>;
   state: MatchStatus;
   playersMap: Map<string, GameServer.Player>;
-  debugRender: DebugRender; //debug
 
   constructor(id: string, mapConfig: any, config: GameConstructData, network: GameNetwork, events: EventEmitter<ManagerEvents>) {
     this.id = id;
@@ -40,7 +39,6 @@ export class Match {
     this.mapConfig = mapConfig;
     constructServerWorld(mapConfig).then((value: MatterData) => {
       this.matter = value;
-      this.debugRender = new DebugRender(this.matter.engine);
       this.state.isConstructed = true;
     });
   }
@@ -62,7 +60,7 @@ export class Match {
     {
       Engine.update(this.matter.engine, this.timer.fixedDelta);
       this.playersMap.forEach((value: GameServer.Player, key: string)=>{
-        this.network.ioSock.to(key).emit("snapShot", this.matter.tick, [{id: value.id, pos: {x: value.body.position.x, y: value.body.position.y}}]);
+        this.network.ioSock.to(key).emit("snapShot", this.matter.tick, this.getDebugSnapshot());
       })
       this.matter.tick++;
     }
@@ -101,6 +99,7 @@ export class Match {
     socket.on("input", (data: PlayerInput) => player.applyInput(data));
     socket.once("playerReady", () => {
       console.log("player ready recieved");
+      this.spawnPlayer(player);
       player.stats.isReady = true;
       this.state.readyPlayers++;
       if (!this.state.isStarted &&
@@ -111,7 +110,7 @@ export class Match {
 
   spawnPlayer(player: GameServer.Player)
   {
-    player.body.position = {x: 300, y: 400};
+    Body.setPosition(player.body,{x: 500, y: 200}); //placeholder
     Composite.add(this.matter.world, player.body);
   }
 
@@ -148,14 +147,14 @@ export class Match {
     return this.matter.world.bodies.map((body: any) => ({
       id: body.plugin?.gameObject?.id ?? body.id,
       label: body.label ?? "body",
-      x: body.position.x,
-      y: body.position.y,
+      pos: {x: body.position.x, y: body.position.y},
       angle: body.angle,
       width: body.bounds.max.x - body.bounds.min.x,
       height: body.bounds.max.y - body.bounds.min.y,
       radius: body.circleRadius ?? 0,
       isStatic: Boolean(body.isStatic),
-      isSensor: Boolean(body.isSensor)
+      isSensor: Boolean(body.isSensor),
+      mask: body.collisionFilter.mask
     }));
   }
 
