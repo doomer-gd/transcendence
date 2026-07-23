@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom/client";
-
-import { StartServer } from "../main";
+import { DebugRender } from "./Render";
 
 
 function DebugApp() {
 
-    StartServer();
-    return (
-        <div
-            style={{
-                width: "100vw",
-                height: "100vh",
-                overflow: "hidden"
-            }}
-        >
-        </div>
-    );
-  }
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+
+        if (!containerRef.current)
+            return;
+
+        const debug = new DebugRender(containerRef.current);
+
+        return () => debug.destroy();
+
+    }, []);
+
+    return <div ref={containerRef} />;
+}
 
 ReactDOM.createRoot(
     document.getElementById("root")!
