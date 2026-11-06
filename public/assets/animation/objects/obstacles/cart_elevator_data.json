@@ -1,0 +1,19 @@
+
+
+{
+  "label": "cart_elevator",
+  "fileName": "./assets/animation/objects/osbtacles/cart_elevator_data.json",
+  "hitbox":
+  {
+    "height": 27,
+    "width": 160,
+    "xOffset": 0,
+    "yOffset": 0,
+    "scale": 1,
+    "options":{
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  }
+}

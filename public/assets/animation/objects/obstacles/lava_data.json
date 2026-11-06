@@ -1,0 +1,7 @@
+{
+  "label": "lava_sprite_data",
+  "fileName": "./assets/animation/objects/obstacles/lava_data.json",
+  "frames": [
+    { "label": "lava_sprite", "type": "idle", "prefix": "lava_long_", "numberFrames": 3, "duration": 0.7 }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "label": "water_priestess",
+  "fileName": "./assets/animation/water_priestess/water_priestess_data.json",
+  "title": [{"lang": "en", "title": "WATER PRIESTESS"},
+            {"lang": "es", "title": "PRIESTESA\nDE AGUA"},
+            {"lang": "pt", "title": "PRIESTA\nDE ÁGUA"}],
+  "frames": [
+    { "label": "water_idle"   , "type": "idle"   , "prefix": "water_idle_"   , "numberFrames": 8 , "duration": 40  },
+    { "label": "water_run"    , "type": "walk"   , "prefix": "water_run_"    , "numberFrames": 10, "duration": 80  },
+    { "label": "water_jump"   , "type": "jump"   , "prefix": "water_jump_"   , "numberFrames": 3 , "duration": 18  },
+    { "label": "water_fall"   , "type": "fall"   , "prefix": "water_fall_"   , "numberFrames": 3 , "duration": 18  },
+    { "label": "water_roll"   , "type": "dodge"  , "prefix": "water_roll_"   , "numberFrames": 6 , "duration": 30  },
+    { "label": "water_atk"    , "type": "attack1", "prefix": "water_atk_"    , "numberFrames": 7 , "duration": 28  },
+    { "label": "water_special", "type": "special", "prefix": "water_special_", "numberFrames": 32, "duration": 96  },
+    { "label": "water_hit"    , "type": "hit"    , "prefix": "water_hit_"    , "numberFrames": 7 , "duration": 42  },
+    { "label": "water_death"  , "type": "dead"   , "prefix": "water_death_"  , "numberFrames": 16, "duration": 32  },
+    { "label": "water_atk2"   , "type": "attack2", "prefix": "water_atk2_"   , "numberFrames": 8 , "duration": 32  }
+  ],
+  "hitbox": {
+    "height": 86,
+    "width": 40,
+    "xOffset": -4,
+    "yOffset": -87,
+    "feetHeight": 10,
+    "scale": 2,
+    "options": {
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "params": {
+    "speedBase": 5,
+    "maxHP": 80,
+    "maxEnergy": 135,
+    "jumpForce": 20,
+    "airDamping": 0.7,
+    "poise": 0.32,
+    "gravity": 0.015,
+    "regen": 0.5,
+    "cooldown": 60,
+    "charges": 3,
+    "mass": 5000
+  },
+  "moves": [
+    {
+      "type": 0,
+      "duration": 28,
+      "start": 16,
+      "end": 24,
+      "damage": 30,
+      "cost": 30,
+      "box": { "x": 55, "y": -10, "height": 20, "width": 110 }
+    },
+    {
+      "type": 1,
+      "duration": 96,
+      "start": 32,
+      "end": 84,
+      "damage": 60,
+      "cost": 40,
+      "box": { "x": 100, "y": -5, "height": 80, "width": 200 }
+    },
+    {
+      "type": 2,
+      "duration": 32,
+      "start": 0,
+      "end": 28,
+      "damage": 30,
+      "cost": 35,
+      "box": { "x": 60, "y": -25, "height": 0, "width": 0 },
+      "label": "bolt"
+    },
+    {
+      "type": 4,
+      "duration": 30,
+      "start": 0,
+      "end": 30,
+      "damage": 0,
+      "cost": 20
+    }
+  ],
+  "audio":
+  {
+    "hit": "priestess_hit",
+    "attack": "sabre",
+    "special": "water_splash",
+    "secondary": "orb_cast",
+    "dash": "dash"
+  },
+  "meta": {
+    "atlas": "water_priestess_atlas.json"
+  }
+}

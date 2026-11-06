@@ -1,0 +1,27 @@
+{
+  "label": "arrow",
+  "fileName": "./assets/animation/objects/arrow/arrow_data.json",
+  "frames": [
+    { "label": "arrow_idle", "type": "idle", "prefix": "leaf_arrow_", "numberFrames": 1, "duration": 10 },
+    { "label": "arrow_dead", "type": "dead", "prefix": "leaf_arrow_hit_", "numberFrames": 6, "duration": 12 }
+  ],
+  "hitbox":
+  {
+    "height": 10,
+    "width": 55,
+    "xOffset": 0,
+    "yOffset": 0,
+    "scale": 2,
+    "options":{
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "audio":
+  {
+    "attack": "arrow_hit"
+  },
+  "speed": 15,
+  "meta": { "atlas": "arrow_atlas.json" }
+}

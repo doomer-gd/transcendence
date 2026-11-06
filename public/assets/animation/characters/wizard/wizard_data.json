@@ -1,0 +1,39 @@
+{
+  "label": "wizard",
+  "fileName": "./assets/animation/wizard_data.json",
+  "title": [{"lang": "en", "title": "WIZARD"}, {"lang": "es", "title": "HECHICERO"}, {"lang": "pt", "title": "MAGO"}],
+  "frames": [
+    { "label": "wizard_attack1", "type": "attack1", "prefix": "wizard_attack1_", "numberFrames": 8, "duration": 24 },
+    { "label": "wizard_fall"   , "type": "fall"   , "prefix": "wizard_fall_"   , "numberFrames": 2, "duration": 40 },
+    { "label": "wizard_hit"    , "type": "hit"    , "prefix": "wizard_hit_"    , "numberFrames": 4, "duration": 30 },
+    { "label": "wizard_idle"   , "type": "idle"   , "prefix": "wizard_idle_"   , "numberFrames": 6, "duration": 90 },
+    { "label": "wizard_jump"   , "type": "jump"   , "prefix": "wizard_jump_"   , "numberFrames": 2, "duration": 40 },
+    { "label": "wizard_run"    , "type": "walk"   , "prefix": "wizard_run_"    , "numberFrames": 8, "duration": 64 }
+  ],
+  "hitbox": {
+    "height": 86,
+    "width": 57,
+    "xOffset": -4,
+    "yOffset": 10,
+    "feetHeight": 10,
+    "scale": 2,
+    "options": {
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "params": {
+    "speedBase": 6,
+    "maxHP": 100,
+    "maxEnergy": 100,
+    "jumpForce": 20,
+    "airDamping": 0.7,
+    "meleeDamage": 20,
+    "poise": 0.5,
+    "gravity": 0.015
+  },
+  "meta": {
+    "atlas": "wizard_atlas.json"
+  }
+}

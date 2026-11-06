@@ -1,0 +1,92 @@
+{
+  "label": "ground_monk",
+  "fileName": "./assets/animation/ground_monk/ground_monk_data.json",
+  "title": [{"lang": "en", "title": "GROUND MONK"},
+            {"lang": "es", "title": "MONJE\nTERRESTRE"},
+            {"lang": "pt", "title": "MONGE\nTERRESTRE"}],
+  "frames": [
+    { "label": "ground_atk"    , "type": "attack1", "prefix": "ground_atk_"    , "numberFrames": 6 , "duration": 24 },
+    { "label": "ground_death"  , "type": "dead"   , "prefix": "ground_death_"  , "numberFrames": 18, "duration": 36 },
+    { "label": "ground_defend" , "type": "attack2", "prefix": "ground_defend_" , "numberFrames": 13, "duration": 40 },
+    { "label": "ground_idle"   , "type": "idle"   , "prefix": "ground_idle_"   , "numberFrames": 6 , "duration": 30 },
+    { "label": "ground_fall"   , "type": "fall"   , "prefix": "ground_fall_"   , "numberFrames": 3 , "duration": 18 },
+    { "label": "ground_jump"   , "type": "jump"   , "prefix": "ground_jump_"   , "numberFrames": 3 , "duration": 18 },
+    { "label": "ground_roll"   , "type": "dodge"  , "prefix": "ground_roll_"   , "numberFrames": 6 , "duration": 30 },
+    { "label": "ground_run"    , "type": "walk"   , "prefix": "ground_run_"    , "numberFrames": 8 , "duration": 36 },
+    { "label": "ground_special", "type": "special", "prefix": "ground_special_", "numberFrames": 25, "duration": 75 },
+    { "label": "ground_hit"    , "type": "hit"    , "prefix": "ground_hit_"    , "numberFrames": 6 , "duration": 36 }
+  ],
+  "hitbox": {
+    "height": 75,
+    "width": 30,
+    "xOffset": 0,
+    "yOffset": -78,
+    "feetHeight": 10,
+    "scale": 2,
+    "options": {
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "params": {
+    "speedBase": 6.5,
+    "maxHP": 90,
+    "maxEnergy": 120,
+    "jumpForce": 23,
+    "airDamping": 0.7,
+    "poise": 0.28,
+    "gravity": 0.015,
+    "regen": 0.5,
+    "cooldown": 60,
+    "charges": 3,
+    "mass": 5000
+  },
+  "moves": [
+    {
+      "type": 0,
+      "duration": 24,
+      "start": 12,
+      "end": 20,
+      "damage": 25,
+      "cost": 25,
+      "box": { "x": 33, "y": -13, "height": 30, "width": 65 }
+    },
+    {
+      "type": 1,
+      "duration": 75,
+      "start": 48,
+      "end": 69,
+      "damage": 45,
+      "cost": 35,
+      "box": { "x": 65, "y": -5, "height": 80, "width": 130 }
+    },
+    {
+      "type": 3,
+      "duration": 40,
+      "start": 0,
+      "end": 32,
+      "damage": 0,
+      "cost": 20,
+      "box": { "x": 20, "y": -10, "height": 0, "width": 0 }
+    },
+    {
+      "type": 4,
+      "duration": 30,
+      "start": 0,
+      "end": 30,
+      "damage": 0,
+      "cost": 20
+    }
+  ],
+  "audio":
+  {
+    "hit": "monk_hit",
+    "attack": "punch",
+    "special": "earth_punch",
+    "dash": "dash"
+  },
+  "meta": {
+    "atlas": "ground_monk_atlas.json"
+  }
+}

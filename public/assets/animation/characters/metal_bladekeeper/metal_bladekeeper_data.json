@@ -1,0 +1,94 @@
+{
+  "label": "metal_bladekeeper",
+  "fileName": "./assets/animation/metal_bladekeeper/metal_bladekeeper_data.json",
+  "title": [{"lang": "en", "title": "METAL BLADE"},
+            {"lang": "es", "title": "HOJA\nMETÁLICA"},
+            {"lang": "pt", "title": "LÂMINA\nMETÁLICA"}],
+  "frames": [
+    { "label": "metal_idle"   , "type": "idle"   , "prefix": "metal_idle_"   , "numberFrames": 8 , "duration": 40 },
+    { "label": "metal_run"    , "type": "walk"   , "prefix": "metal_run_"    , "numberFrames": 8 , "duration": 40 },
+    { "label": "metal_fall"   , "type": "fall"   , "prefix": "metal_fall_"   , "numberFrames": 3 , "duration": 18 },
+    { "label": "metal_jump"   , "type": "jump"   , "prefix": "metal_jump_"   , "numberFrames": 3 , "duration": 18 },
+    { "label": "metal_roll"   , "type": "dodge"  , "prefix": "metal_roll_"   , "numberFrames": 7 , "duration": 35 },
+    { "label": "metal_atk2"   , "type": "attack2", "prefix": "metal_atk2_"   , "numberFrames": 7 , "duration": 20 },
+    { "label": "metal_atk"    , "type": "attack1", "prefix": "metal_atk_"    , "numberFrames": 6 , "duration": 24 },
+    { "label": "metal_special", "type": "special", "prefix": "metal_special_", "numberFrames": 11, "duration": 55 },
+    { "label": "metal_hit"    , "type": "hit"    , "prefix": "metal_hit_"    , "numberFrames": 6 , "duration": 36 },
+    { "label": "metal_death"  , "type": "dead"   , "prefix": "metal_death_"  , "numberFrames": 12, "duration": 24 }
+  ],
+  "hitbox": {
+    "height": 86,
+    "width": 57,
+    "xOffset": -4,
+    "yOffset": -87,
+    "feetHeight": 10,
+    "scale": 2,
+    "options": {
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "params": {
+    "speedBase": 6,
+    "maxHP": 90,
+    "maxEnergy": 120,
+    "jumpForce": 20,
+    "airDamping": 0.7,
+    "poise": 0.3,
+    "gravity": 0.015,
+    "regen": 0.5,
+    "cooldown": 60,
+    "charges": 3,
+    "mass": 5000
+  },
+  "moves": [
+    {
+      "type": 0,
+      "duration": 24,
+      "start": 12,
+      "end": 20,
+      "damage": 20,
+      "cost": 20,
+      "box": { "x": 45, "y": 0, "height": 40, "width": 90 }
+    },
+    {
+      "type": 1,
+      "duration": 55,
+      "start": 22,
+      "end": 44,
+      "damage": 40,
+      "cost": 35,
+      "box": { "x": 0, "y": -10, "height": 100, "width": 300 }
+    },
+    {
+      "type": 2,
+      "duration": 20,
+      "start": 0,
+      "end": 15,
+      "damage": 20,
+      "cost": 35,
+      "box": { "x": 20, "y": -10, "height": 0, "width": 0 },
+      "label": "knife"
+    },
+    {
+      "type": 4,
+      "duration": 35,
+      "start": 0,
+      "end": 35,
+      "damage": 0,
+      "cost": 20
+    }
+  ],
+  "audio":
+  {
+    "hit": "blade_hit",
+    "attack": "knife",
+    "special": "metal_spikes",
+    "secondary": "knife_throw",
+    "dash": "dash"
+  },
+  "meta": {
+    "atlas": "metal_bladekeeper_atlas.json"
+  }
+}

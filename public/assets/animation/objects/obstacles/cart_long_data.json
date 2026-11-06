@@ -1,0 +1,19 @@
+
+
+{
+  "label": "cart_long",
+  "fileName": "./assets/animation/objects/osbtacles/cart_long_data.json",
+  "hitbox":
+  {
+    "height": 16,
+    "width": 128,
+    "xOffset": 0,
+    "yOffset": 0,
+    "scale": 1,
+    "options":{
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  }
+}

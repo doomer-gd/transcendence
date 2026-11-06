@@ -1,0 +1,27 @@
+{
+  "label": "knife",
+  "fileName": "./assets/animation/objects/knife/knife_data.json",
+  "frames": [
+    { "label": "knife_idle", "type": "idle", "prefix": "projectile_throw_", "numberFrames": 1, "duration": 10 },
+    { "label": "knife_dead", "type": "dead", "prefix": "projectile_land_", "numberFrames": 5, "duration": 20 }
+  ],
+  "hitbox":
+  {
+    "height": 10,
+    "width": 20,
+    "xOffset": -5,
+    "yOffset": 0,
+    "scale": 2,
+    "options":{
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "audio":
+  {
+    "attack": "knife_land"
+  },
+  "speed": 15,
+  "meta": { "atlas": "knife_atlas.json" }
+}

@@ -1,0 +1,16 @@
+{
+  "label": "flame",
+  "fileName": "./assets/ui/flame_data.json",
+  "frames": [
+    { "label": "flame_idle", "type": "idle", "prefix": "soul_strip_idle_", "numberFrames": 8, "duration": 1 },
+    { "label": "flame_dead", "type": "dead", "prefix": "soul_strip_die_", "numberFrames": 7, "duration": 0.5 }
+  ],
+  "hitbox":
+  {
+    "height": 64,
+    "width": 64,
+    "xOffset": 0,
+    "yOffset": 0,
+    "scale": 1
+  }
+}

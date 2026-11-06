@@ -4,5 +4,9 @@
   "DOWN": "S",
   "RIGHT": "D",
   "JUMP": "SPACE",
-  "ATTACK": "F"
+  "ATTACK": "F",
+  "SECONDARY": "E",
+  "SPEACIAL": "R",
+  "DODGE": "SHIFT",
+  "SCORES": "TAB"
 }

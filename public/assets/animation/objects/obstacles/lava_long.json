@@ -1,0 +1,92 @@
+{
+  "label": "lava_sprite_atlas",
+  "fileName": "./assets/animation/objects/osbtacles/lava_long.json",
+  "frames": [
+    {
+      "filename": "lava_long_0.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 2048,
+        "h": 40
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 2048,
+        "h": 40
+      },
+      "sourceSize": {
+        "w": 2048,
+        "h": 40
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "lava_long_1.png",
+      "frame": {
+        "x": 0,
+        "y": 40,
+        "w": 2048,
+        "h": 40
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 2048,
+        "h": 40
+      },
+      "sourceSize": {
+        "w": 2048,
+        "h": 40
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "lava_long_2.png",
+      "frame": {
+        "x": 0,
+        "y": 80,
+        "w": 2048,
+        "h": 40
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 2048,
+        "h": 40
+      },
+      "sourceSize": {
+        "w": 2048,
+        "h": 40
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "lava_long.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2048,
+      "h": 120
+    },
+    "scale": 1
+  }
+}

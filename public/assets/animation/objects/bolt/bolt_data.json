@@ -1,0 +1,27 @@
+{
+  "label": "bolt",
+  "fileName": "./assets/animation/objects/bolt/bolt_data.json",
+  "frames": [
+    { "label": "bolt_idle", "type": "idle", "prefix": "bolt_", "numberFrames": 4, "duration": 20 },
+    { "label": "bolt_dead", "type": "dead", "prefix": "bolt_hit_", "numberFrames": 5, "duration": 20 }
+  ],
+  "hitbox":
+  {
+    "height": 45,
+    "width": 45,
+    "xOffset": 0,
+    "yOffset": 0,
+    "scale": 2,
+    "options":{
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "audio":
+  {
+    "attack": "spell_hit"
+  },
+  "speed": 7,
+  "meta": { "atlas": "bolt_atlas.json" }
+}

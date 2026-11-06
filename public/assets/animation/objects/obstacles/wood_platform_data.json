@@ -1,0 +1,17 @@
+{
+  "label": "wood_platform",
+  "fileName": "./assets/animation/objects/osbtacles/wood_platform_data.json",
+  "hitbox":
+  {
+    "height": 24,
+    "width": 170,
+    "xOffset": 0,
+    "yOffset": 0,
+    "scale": 1,
+    "options":{
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  }
+}

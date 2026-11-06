@@ -1,0 +1,23 @@
+{
+  "label": "potion_energy",
+  "fileName": "./assets/animation/objects/pickups/potion_energy_data.json",
+  "hitbox":
+  {
+    "height": 30,
+    "width": 30,
+    "xOffset": 0,
+    "yOffset": 0,
+    "scale": 0.5,
+    "options":{
+      "friction": 0.1,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "audio":
+  {
+    "hit": "potion"
+  },
+  "typePickup": "energy",
+  "effect": 100
+}

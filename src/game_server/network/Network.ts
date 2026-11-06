@@ -28,7 +28,7 @@ export class GameNetwork
 
   private setUpListen()
   {
-    this.ioSock.on("connect", (socket) => {
+    this.ioSock.on("connection", (socket) => {
       this.sockMap.set(socket.id, socket);
       console.log(socket.id, "joined");
 

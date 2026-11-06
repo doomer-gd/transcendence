@@ -1,0 +1,20 @@
+warped shooting https://ansimuz.itch.io/warped-shooting-fx
+
+mana soul hud/ui https://tiopalada.itch.io/tiny-rpg-mana-soul-gui
+
+characters https://chierit.itch.io/elementals-bundle
+
+background https://szadiart.itch.io/bakcground-hill
+
+font https://tinyworlds.itch.io/free-pixel-font-thaleah
+
+sounds https://tommusic.itch.io/free-fantasy-200-sfx-pack
+
+cave tileset https://cubeasset.itch.io/deep-cave-platformer
+
+fortress tileset https://free-game-assets.itch.io/free-swamp-2d-tileset-pixel-art
+other tiles https://marcengelgamedevelopment.itch.io/platformer-tileset
+
+platforms https://hxlite.itch.io/kilang-factory-mechanical-industrial-tileset-16x16-side-scrolling-game
+
+music https://jacobstaffordmusic.itch.io/mythical-battlegrounds

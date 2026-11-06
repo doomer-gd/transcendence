@@ -48,8 +48,30 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(function PhaserGame
 
   useEffect(() =>
   {
-      EventBus.on('current-scene-ready', (scene_instance: Phaser.Scene) =>
+      let currentScene: Phaser.Scene | null = null;
+      const pauseScene = () =>
       {
+          if (!currentScene)
+              return;
+          currentScene.scene.pause();
+      };
+      const resumeScene = () =>
+      {
+          if (!currentScene)
+              return;
+          currentScene.scene.resume();
+      };
+      const handleVisibilityChange = () =>
+      {
+          if (document.visibilityState === 'hidden')
+              pauseScene();
+          else
+              resumeScene();
+      };
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      const handleSceneReady = (scene_instance: Phaser.Scene) =>
+      {
+          currentScene = scene_instance;
           if (currentActiveScene && typeof currentActiveScene === 'function')
           {
               currentActiveScene(scene_instance);
@@ -61,11 +83,12 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(function PhaserGame
           {
               ref.current = { game: game.current, scene: scene_instance };
           }
-
-      });
+      };
+      EventBus.on('current-scene-ready', handleSceneReady);
       return () =>
       {
-          EventBus.removeListener('current-scene-ready');
+          document.removeEventListener('visibilitychange', handleVisibilityChange);
+          EventBus.removeListener('current-scene-ready', handleSceneReady);
       }
   }, [currentActiveScene, ref]);
 

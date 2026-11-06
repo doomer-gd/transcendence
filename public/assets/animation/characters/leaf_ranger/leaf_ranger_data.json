@@ -1,0 +1,94 @@
+{
+  "label": "leaf_ranger",
+  "fileName": "./assets/animation/leaf_ranger/leaf_ranger_data.json",
+  "title": [{"lang": "en", "title": "LEAF RANGER"},
+            {"lang": "es", "title": "GUARDIÁN\nDE HOJAS"},
+            {"lang": "pt", "title": "GUARDIÃO\nDA FLORESTA"}],
+  "frames": [
+    { "label": "leaf_atk"    , "type": "attack1", "prefix": "leaf_atk_"    , "numberFrames": 10, "duration": 40 },
+    { "label": "leaf_atk2"   , "type": "attack2", "prefix": "leaf_atk2_"   , "numberFrames": 15, "duration": 45 },
+    { "label": "leaf_death"  , "type": "dead"   , "prefix": "leaf_death_"  , "numberFrames": 19, "duration": 38 },
+    { "label": "leaf_idle"   , "type": "idle"   , "prefix": "leaf_idle_"   , "numberFrames": 12, "duration": 60 },
+    { "label": "leaf_fall"   , "type": "fall"   , "prefix": "leaf_fall_"   , "numberFrames": 3 , "duration": 18 },
+    { "label": "leaf_jump"   , "type": "jump"   , "prefix": "leaf_jump_"   , "numberFrames": 3 , "duration": 18 },
+    { "label": "leaf_roll"   , "type": "dodge"  , "prefix": "leaf_roll_"   , "numberFrames": 8 , "duration": 32 },
+    { "label": "leaf_run"    , "type": "walk"   , "prefix": "leaf_run_"    , "numberFrames": 10, "duration": 45 },
+    { "label": "leaf_special", "type": "special", "prefix": "leaf_special_", "numberFrames": 17, "duration": 61 },
+    { "label": "leaf_hit"    , "type": "hit"    , "prefix": "leaf_hit_"    , "numberFrames": 6 , "duration": 36 }
+  ],
+  "hitbox": {
+    "height": 90,
+    "width": 40,
+    "xOffset": 0,
+    "yOffset": -84,
+    "feetHeight": 10,
+    "scale": 2,
+    "options": {
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "params": {
+    "speedBase": 5.5,
+    "maxHP": 100,
+    "maxEnergy": 100,
+    "jumpForce": 20,
+    "airDamping": 0.7,
+    "poise": 0.28,
+    "gravity": 0.015,
+    "regen": 0.5,
+    "cooldown": 60,
+    "charges": 3,
+    "mass": 5000
+  },
+  "moves": [
+    {
+      "type": 0,
+      "duration": 40,
+      "start": 20,
+      "end": 36,
+      "damage": 20,
+      "cost": 20,
+      "box": { "x": 78, "y": -17, "height": 30, "width": 158 }
+    },
+    {
+      "type": 1,
+      "duration": 60,
+      "start": 30,
+      "end": 60,
+      "damage": 50,
+      "cost": 35,
+      "box": { "x": 146, "y": -10, "height": 40, "width": 285 }
+    },
+    {
+      "type": 2,
+      "duration": 45,
+      "start": 0,
+      "end": 24,
+      "damage": 20,
+      "cost": 35,
+      "box": {"x": 40, "y": -20, "height": 0, "width": 0},
+      "label": "arrow"
+    },
+    {
+      "type": 4,
+      "duration": 32,
+      "start": 0,
+      "end": 32,
+      "damage": 0,
+      "cost": 20
+    }
+  ],
+  "audio":
+  {
+    "hit": "elf",
+    "attack": "arrow_poke",
+    "special": "electric_strike",
+    "secondary": "elf_shoot",
+    "dash": "dash"
+  },
+  "meta": {
+    "atlas": "leaf_ranger_atlas.json"
+  }
+}

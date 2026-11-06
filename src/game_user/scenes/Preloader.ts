@@ -1,48 +1,63 @@
 import { Scene } from 'phaser';
+import { EScenes } from '@/game_common/main/main';
+
+export enum UI
+{
+  hud_timer = "hud_timer",
+  hud_bars = "hud_bars",
+  hud_icons = "hud_icons",
+  hud_message = "hud_message",
+  control = "touch_control",
+  compass = "compass",
+  message_board = "message_board",
+  portrait = "portrait",
+  find_game = "find_game",
+  font = "font_thaleahFat",
+  board = "hud_board",
+  color_main = 0xfad526,
+  color_aux = 0x060845,
+  color_team_red = 0x850101,
+  color_team_blue = 0x002db3
+}
 
 export class Preloader extends Scene {
 
+
   constructor() {
-    super('Preloader');
+    super(EScenes.preload);
   }
 
-  init() {
-    //  We loaded this image in our Boot Scene, so we can display it here
-    this.add.image(512, 384, 'background');
-
-    //  A simple progress bar. This is the outline of the bar.
+  init()
+  {
     this.add.rectangle(512, 384, 468, 32).setStrokeStyle(1, 0xffffff);
-
-    //  This is the progress bar itself. It will increase in size from the left based on the % of progress.
     const bar = this.add.rectangle(512 - 230, 384, 4, 28, 0xffffff);
-
-    //  Use the 'progress' event emitted by the LoaderPlugin to update the loading bar
     this.load.on('progress', (progress: number) => {
-
-      //  Update the progress bar (our bar is 464px wide, so 100% = 464px)
       bar.width = 4 + (460 * progress);
-
     });
   }
 
-  preload() {
-    //  Load the assets for the game - Replace with your own assets
-    this.load.setPath('assets');
-    this.load.image('logo', 'logo.png');
-    this.load.image('star', 'star.png');
-    this.load.setPath('../assets');
-    this.load.image('background_dark', './samples/bulkhead-wallsx1.png');
-    this.load.image('player', './samples/witch1.png');
-    this.load.image('enemy', './samples/vampire1.png');
+  preload()
+  {
+    //  Load the config first, then queue the rest once config is available.
+    this.load.json('keymap', 'config/keymap.json');
+    this.load.json('config', 'config/config.json');
+
+    this.load.image(UI.board, "assets/ui/hud_scroll.png");
+    this.load.image(UI.hud_timer, "assets/ui/hud_timer.png");
+    this.load.image(UI.hud_bars, "assets/ui/hud_bars.png");
+    this.load.image(UI.hud_icons, "assets/ui/hud_items.png");
+    this.load.image(UI.hud_message, "assets/ui/hud_message.png");
+    this.load.image(UI.find_game, "assets/ui/button_scroll.png");
+    this.load.image(UI.compass, "assets/ui/compass.png");
+    this.load.image(UI.message_board, "assets/ui/message_board.png");
+    this.load.image(UI.portrait, "assets/ui/portrait_frame.png");
+    this.load.image(UI.control, "assets/ui/control_key.png");
+    this.load.atlas("icons_atlas", "assets/ui/icons.png",  "assets/ui/icons_atlas.json");
+    this.load.bitmapFont(UI.font, "assets/ui/ThaleahFat.png", "assets/ui/ThaleahFat.xml");
   }
 
-  create() {
-    //  When all the assets have loaded, it's often worth creating global objects here that the rest of the game can use.
-    //  For example, you can define global animations here, so we can use them in other scenes.
-
-    //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
-
-
-    this.scene.start('MainMenu');
+  create()
+  {
+    this.scene.start(EScenes.mainMenu);
   }
 }

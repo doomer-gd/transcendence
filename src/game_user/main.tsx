@@ -16,7 +16,7 @@ function App()
 
           if (phaserRef.current.scene)
           {
-              scene.changeScene();
+              scene.startGame();
           }
       }
     }
@@ -25,17 +25,11 @@ function App()
     return (
         <div id="app">
             <PhaserGame ref={phaserRef} />
-            <div>
-                <div>
-                    <button className="button" onClick={changeScene}>Change Scene</button>
-                </div>
-            </div>
         </div>
     )
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
+
         <App />
-    </React.StrictMode>,
 )

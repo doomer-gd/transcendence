@@ -1,54 +1,56 @@
-import { GameOver } from '../../game_user/scenes/GameOver.ts';
 import { GameScene } from '../../game_user/scenes/Game';
 import { MainMenu } from '../../game_user/scenes/MainMenu';
-import { AUTO, Game } from 'phaser';
 import { Preloader } from '../../game_user/scenes/Preloader';
+import { OfflinePreview } from '@/game_user/scenes/OfflinePreview.ts';
+import { UIScene } from '@/game_user/scenes/UIOverlay.ts';
+import * as Phaser from 'phaser'
 
-//  Find out more information about the Game Config at:
-//  https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
+export const DF_GAME_WIDTH: number = 1280;
+export const DF_GAME_HEIGHT: number = 720;
 
-const GAME_WIDTH:number = 1024;
-const GAME_HEIGHT:number = 768;
+export const enum EScenes {
+  preload = "ScenePreload",
+  mainMenu = "SceneMainMenu",
+  game = "SceneGame",
+  UI = "SceneUserInterface",
+  offline = "SceneOffline",
+}
 
 const config: Phaser.Types.Core.GameConfig = {
-  type: AUTO,
-  width: GAME_WIDTH,
-  height: GAME_HEIGHT,
-  parent: 'game-container',
-  backgroundColor: '#028af8',
-  scene: [
-    Preloader,
-    MainMenu,
-    GameScene,
-    GameOver
-  ],
+  type: Phaser.AUTO,
+  width: DF_GAME_WIDTH,
+  height: DF_GAME_HEIGHT,
+  pixelArt: true,
+  parent: "game-container",
+  backgroundColor: "#028af8",
+  scene: [Preloader, MainMenu, GameScene, UIScene, OfflinePreview],
+  audio: {
+        disableWebAudio: true // Forces HTML5 Audio tags for all sounds
+  },
+  scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+    },
   physics: {
-    default: 'matter',
+    default: "matter",
     matter: {
       gravity: { y: 3, x: 0 },
       autoUpdate: false,
       runner: {
-        fps:60
+        fps: 60,
       },
-      setBounds: {
-        x: 0,
-        y: 0,
-        width: GAME_WIDTH,
-        height: GAME_HEIGHT,
-      },
-      debug: {showBody: true,
+      debug: {
+        showBody: true,
         showStaticBody: true,
         showVelocity: true,
-        showCollisions: true
-      }
-    }
-  }
+        showCollisions: true,
+      },
+    },
+  },
 };
 
 const StartGame = (parent: string) => {
-
-  return new Game({ ...config, parent });
-
-}
+  return new Phaser.Game({ ...config, parent });
+};
 
 export default StartGame;

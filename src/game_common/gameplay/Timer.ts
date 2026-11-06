@@ -4,10 +4,12 @@ export class Timer
   private currentTime: number;
   private accumulated: number;
   readonly fixedDelta: number;
+  public delta: number;
 
   constructor (fixedDelta: number)
   {
     this.fixedDelta = fixedDelta;
+    this.delta = fixedDelta;
     this.refresh();
   }
 
@@ -27,9 +29,14 @@ export class Timer
 
   checkTick(): boolean
   {
-    if (this.fixedDelta > this.accumulated)
+    if (this.delta > this.accumulated)
       return false;
-    this.accumulated -= this.fixedDelta;
+    this.accumulated -= this.delta;
     return true;
+  }
+
+  setDelay(delay: number)
+  {
+    this.delta = delay;
   }
 }

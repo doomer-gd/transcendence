@@ -1,18 +1,193 @@
 {
   "maps":[
     {
-      "label": "cave",
-      "fileName": "/assets/maps/cave.json"
+      "label": "cave_duel",
+      "data": { "label": "cave_1_objects", "fileName": "/assets/maps/cave_2.2_duel.json" },
+      "mapImage": { "label": "cave_1_map_image", "fileName": "/assets/tiles/cave_2.2.png" },
+      "background": { "label": "cave_1_background", "fileName": "/assets/tiles/cavern_back.png"},
+      "backLayers":[{"label": "cave_1_backOverlay", "fileName": "/assets/tiles/cavern_back_walls.png"}],
+      "thumb": { "label": "duel_thumb", "fileName": "/assets/ui/map_duel_cave.png"}
+    },
+    {
+      "label": "cave_chaos",
+      "data": { "label": "cave_2_objects", "fileName": "/assets/maps/cave_2.2_ffa.json" },
+      "mapImage": { "label": "cave_1_map_image", "fileName": "/assets/tiles/cave_2.2.png" },
+      "background": { "label": "cave_1_background", "fileName": "/assets/tiles/cavern_back.png"},
+      "backLayers":[{"label": "cave_1_backOverlay", "fileName": "/assets/tiles/cavern_back_walls.png"}],
+      "thumb": { "label": "chaos_thumb", "fileName": "/assets/ui/map_chaos_cave.png"}
+    },
+    {
+      "label": "fortress",
+      "data": { "label": "fortress_objects", "fileName": "/assets/maps/fortress_1.1_team.json" },
+      "mapImage": { "label": "fortress_map_image", "fileName": "/assets/tiles/fortress_1.2.png" },
+      "background": { "label": "fortress_background", "fileName": "/assets/tiles/background_hill.png"},
+      "thumb": { "label": "fortress_thumb", "fileName": "/assets/ui/map_team_fortress.png"}
     }
   ],
   "characters":[
     {
+      "label": "crystal_mauler",
+      "data": { "label": "crystal_mauler_data", "fileName": "/assets/animation/characters/crystal_mauler/crystal_mauler_data.json"},
+      "atlas": { "label": "crystal_mauler_atlas", "fileName": "/assets/animation/characters/crystal_mauler/crystal_mauler_atlas.json" },
+      "image": { "label": "crystal_mauler_image", "fileName": "/assets/animation/characters/crystal_mauler/crystal_mauler.png" }
+    },
+    {
+      "label": "fire_knight",
+      "data": { "label": "fire_knight_data", "fileName": "/assets/animation/characters/fire_knight/fire_knight_data.json" },
+      "atlas": { "label": "fire_knight_atlas", "fileName": "/assets/animation/characters/fire_knight/fire_knight_atlas.json" },
+      "image": { "label": "fire_knight_image", "fileName": "/assets/animation/characters/fire_knight/fire_knight.png" }
+    },
+    {
+      "label": "ground_monk",
+      "data": { "label": "ground_monk_data", "fileName": "/assets/animation/characters/ground_monk/ground_monk_data.json" },
+      "atlas": { "label": "ground_monk_atlas", "fileName": "/assets/animation/characters/ground_monk/ground_monk_atlas.json" },
+      "image": { "label": "ground_monk_image", "fileName": "/assets/animation/characters/ground_monk/ground_monk.png" }
+    },
+    {
+      "label": "leaf_ranger",
+      "data": { "label": "leaf_ranger_data", "fileName": "/assets/animation/characters/leaf_ranger/leaf_ranger_data.json" },
+      "atlas": { "label": "leaf_ranger_atlas", "fileName": "/assets/animation/characters/leaf_ranger/leaf_ranger_atlas.json" },
+      "image": { "label": "leaf_ranger_image", "fileName": "/assets/animation/characters/leaf_ranger/leaf_ranger.png" }
+    },
+    {
+      "label": "metal_bladekeeper",
+      "data": { "label": "metal_bladekeeper_data", "fileName": "/assets/animation/characters/metal_bladekeeper/metal_bladekeeper_data.json" },
+      "atlas": { "label": "metal_bladekeeper_atlas", "fileName": "/assets/animation/characters/metal_bladekeeper/metal_bladekeeper_atlas.json" },
+      "image": { "label": "metal_bladekeeper_image", "fileName": "/assets/animation/characters/metal_bladekeeper/metal_bladekeeper.png" }
+    },
+    {
+      "label": "water_priestess",
+      "data": { "label": "water_priestess_data", "fileName": "/assets/animation/characters/water_priestess/water_priestess_data.json" },
+      "atlas": { "label": "water_priestess_atlas", "fileName": "/assets/animation/characters/water_priestess/water_priestess_atlas.json" },
+      "image": { "label": "water_priestess_image", "fileName": "/assets/animation/characters/water_priestess/water_priestess.png" }
+    },
+    {
       "label": "wizard",
-      "fileName": "/assets/animation/wizard_data.json"
+      "data": { "label": "wizard_data", "fileName": "/assets/animation/characters/wizard/wizard_data.json" },
+      "atlas": { "label": "wizard_atlas", "fileName": "/assets/animation/characters/wizard/wizard_atlas.json" },
+      "image": { "label": "wizard_image", "fileName": "/assets/animation/characters/wizard/wizard_atlas.png" }
     }
   ],
-  "server":{
+  "gameObjects":[
+    {
+      "label": "knife",
+      "type": "projectile",
+      "data": { "label": "knife_data", "fileName": "/assets/animation/objects/knife/knife_data.json" },
+      "atlas": { "label": "knife_atlas", "fileName": "/assets/animation/objects/knife/knife_atlas.json" },
+      "image": { "label": "knife_image", "fileName": "/assets/animation/objects/knife/knife.png" }
+    },
+    {
+      "label": "arrow",
+      "type": "projectile",
+      "data": { "label": "arrow_data", "fileName": "/assets/animation/objects/arrow/arrow_data.json" },
+      "atlas": { "label": "arrow_atlas", "fileName": "/assets/animation/objects/arrow/arrow_atlas.json" },
+      "image": { "label": "arrow_image", "fileName": "/assets/animation/objects/arrow/arrow.png" }
+    },
+    {
+      "label": "bolt",
+      "type": "projectile",
+      "data": { "label": "bolt_data", "fileName": "/assets/animation/objects/bolt/bolt_data.json" },
+      "atlas": { "label": "bolt_atlas", "fileName": "/assets/animation/objects/bolt/bolt_atlas.json" },
+      "image": { "label": "bolt_image", "fileName": "/assets/animation/objects/bolt/bolt.png" }
+    },
+    {
+      "label": "potion_hp",
+      "type": "pickup",
+      "data": { "label": "potion_hp_data", "fileName": "/assets/animation/objects/pickups/potion_hp_data.json" },
+      "atlas": { "label": "icons_atlas", "fileName": "/assets/ui/icons_atlas.json" },
+      "image": { "label": "icons_image", "fileName": "/assets/ui/icons.png" }
+    },
+    {
+      "label": "potion_energy",
+      "type": "pickup",
+      "data": { "label": "potion_energy_data", "fileName": "/assets/animation/objects/pickups/potion_energy_data.json" },
+      "atlas": { "label": "icons_atlas", "fileName": "/assets/ui/icons_atlas.json" },
+      "image": { "label": "icons_image", "fileName": "/assets/ui/icons.png" }
+    },
+    {
+      "label": "cart_short",
+      "type": "movingObstacle",
+      "data": { "label": "cart_short_data", "fileName": "/assets/animation/objects/obstacles/cart_short_data.json" },
+      "image": { "label": "cart_short_image", "fileName": "/assets/animation/objects/obstacles/cart_short.png" }
+    },
+    {
+      "label": "cart_long",
+      "type": "movingObstacle",
+      "data": { "label": "cart_long_data", "fileName": "/assets/animation/objects/obstacles/cart_long_data.json" },
+      "image": { "label": "cart_long_image", "fileName": "/assets/animation/objects/obstacles/cart_long.png" }
+    },
+    {
+      "label": "cart_elevator",
+      "type": "movingObstacle",
+      "data": { "label": "cart_elevator_data", "fileName": "/assets/animation/objects/obstacles/cart_elevator_data.json" },
+      "image": { "label": "cart_elevator_image", "fileName": "/assets/animation/objects/obstacles/cart_elevator.png" }
+    },
+    {
+      "label": "wood_platform",
+      "type": "movingObstacle",
+      "data": { "label": "wood_platform_data", "fileName": "/assets/animation/objects/obstacles/wood_platform_data.json" },
+      "image": { "label": "wood_platform_image", "fileName": "/assets/animation/objects/obstacles/wood_platform.png" }
+    },
+    {
+      "label": "lava_sprite",
+      "type": "decor",
+      "data": { "label": "lava_sprite_data", "fileName": "/assets/animation/objects/obstacles/lava_data.json" },
+      "atlas": { "label": "lava_sprite_atlas", "fileName": "/assets/animation/objects/obstacles/lava_long.json" },
+      "image": { "label": "lava_sprite_image", "fileName": "/assets/animation/objects/obstacles/lava_long.png" }
+    },
+    {
+      "label": "lava_bottom",
+      "type": "decor",
+      "image": { "label": "lava_sprite_image", "fileName": "/assets/animation/objects/obstacles/lava_bottom.png" }
+    },
+    {
+      "label": "flame",
+      "type": "decor",
+      "data": { "label": "flame_data", "fileName": "/assets/ui/flame_data.json" },
+      "atlas": { "label": "flame_atlas", "fileName": "/assets/ui/flame_atlas.json" },
+      "image": { "label": "flame_image", "fileName": "/assets/ui/flame.png" }
+    }
+  ],
+  "audio":
+  [
+    {"label": "arrow_poke", "fileName": "/assets/sound/effects/attack/arrow_poke.ogg"},
+    {"label": "hammer", "fileName": "/assets/sound/effects/attack/hammer.ogg"},
+    {"label": "knife", "fileName": "/assets/sound/effects/attack/knife.ogg"},
+    {"label": "punch", "fileName": "/assets/sound/effects/attack/punch.ogg"},
+    {"label": "sabre", "fileName": "/assets/sound/effects/attack/sabre.ogg"},
+    {"label": "sword", "fileName": "/assets/sound/effects/attack/sword.ogg"},
+    {"label": "blade_hit", "fileName": "/assets/sound/effects/hit/blade_hit.ogg"},
+    {"label": "dwarf", "fileName": "/assets/sound/effects/hit/dwarf.ogg"},
+    {"label": "elf", "fileName": "/assets/sound/effects/hit/elf.ogg"},
+    {"label": "knight_hit", "fileName": "/assets/sound/effects/hit/knight_hit.ogg"},
+    {"label": "monk_hit", "fileName": "/assets/sound/effects/hit/monk_hit.ogg"},
+    {"label": "priestess_hit", "fileName": "/assets/sound/effects/hit/priestess_hit.ogg"},
+    {"label": "dash", "fileName": "/assets/sound/effects/other/dash.ogg"},
+    {"label": "potion", "fileName": "/assets/sound/effects/other/potion.ogg"},
+    {"label": "arrow_hit", "fileName": "/assets/sound/effects/second/arrow_hit.ogg"},
+    {"label": "elf_shoot", "fileName": "/assets/sound/effects/second/elf_shoot.ogg"},
+    {"label": "knife_land", "fileName": "/assets/sound/effects/second/knife_land.ogg"},
+    {"label": "knife_throw", "fileName": "/assets/sound/effects/second/knife_throw.ogg"},
+    {"label": "orb_cast", "fileName": "/assets/sound/effects/second/orb_cast.ogg"},
+    {"label": "spell_hit", "fileName": "/assets/sound/effects/second/spell_hit.ogg"},
+    {"label": "crystal_blast", "fileName": "/assets/sound/effects/special/crystal_blast.ogg"},
+    {"label": "earth_punch", "fileName": "/assets/sound/effects/special/earth_punch.ogg"},
+    {"label": "electric_strike", "fileName": "/assets/sound/effects/special/electric_strike.ogg"},
+    {"label": "fire_swing", "fileName": "/assets/sound/effects/special/fire_swing.ogg"},
+    {"label": "metal_spikes", "fileName": "/assets/sound/effects/special/metal_spikes.ogg"},
+    {"label": "water_splash", "fileName": "/assets/sound/effects/special/water_splash.ogg"},
+    {"label": "cave_fight", "fileName": "/assets/sound/music/battle_strings.wav"}
+  ],
+  "server":
+  {
     "port": 3000,
-    "fps": 60
+    "fps": 60,
+    "lookahead": 6,
+    "lookback": 10,
+    "windowHeight": 768,
+    "windowWidth": 1024,
+    "timeout": 300000,
+    "maxNickLenght": 8,
+    "maxMatches": 6
   }
 }
