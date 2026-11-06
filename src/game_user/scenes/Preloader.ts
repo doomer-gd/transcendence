@@ -53,7 +53,7 @@ export class Preloader extends Scene {
     this.load.image(UI.portrait, "assets/ui/portrait_frame.png");
     this.load.image(UI.control, "assets/ui/control_key.png");
     this.load.atlas("icons_atlas", "assets/ui/icons.png",  "assets/ui/icons_atlas.json");
-    this.load.bitmapFont(UI.font, "assets/ui/ThaleahFat.png", "assets/ui/ThaleahFat.xml");
+    this.load.bitmapFont(UI.font, "assets/ui/Eight_bit_dragon.png", "assets/ui/Eight_bit_dragon.xml");
   }
 
   create()

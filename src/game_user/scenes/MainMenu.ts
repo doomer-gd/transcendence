@@ -221,10 +221,10 @@ export class MainMenu extends Scene
   {
     this.gridMap = new MenuGrid(this, UI.compass, this.window.w * MM_HERO_WIDTH,
       {x:3, y: 1}, {x: this.window.halfW, y: this.window.h * MM_HERO_POS_X});
-    this.gridMap.setTitles(Array.from(this.config.maps, (map) => map.title.find((title) => title.lang === this.language)!.title), 24);
+    this.gridMap.setTitles(Array.from(this.config.maps, (map) => map.title.find((title) => title.lang === this.language)!.title), 16);
     this.gridHero = new MenuGrid(this, UI.portrait, this.window.w * MM_HERO_WIDTH,
       {x:6, y: 1}, {x: this.window.halfW, y: this.window.h * MM_HERO_POS_X});
-    this.gridHero.setTitles(Array.from(this.config.characters, (hero) => hero.title.find((title) => title.lang === this.language)!.title), 24);
+    this.gridHero.setTitles(Array.from(this.config.characters, (hero) => hero.title.find((title) => title.lang === this.language)!.title), 16);
     const anims = this.config.characters.map((hero) => this.anims.get(hero.animModes["idle"].label));
     const mapThumbs = this.config.maps.map((map) => map.thumb.label);
     const offsets: { x: number; y: number }[] = this.config.characters.map(

@@ -1,4 +1,4 @@
-const FONT_SIZE = 0.3;
+const FONT_SIZE = 0.2;
 const B_ICON_SHARE = 0.6;
 
 export class MenuButton
