@@ -40,8 +40,8 @@ export class OfflinePreview extends Scene
     this.constructTilemap(this.mapConfig);
     this.events.once("worldConstructed", () =>
     {
-      // const heroIndex = Math.trunc(Math.random() * 6);
-      const heroIndex = 3;
+      const heroIndex = Math.trunc(Math.random() * 6);
+      // const heroIndex = 3;
       const id = this.sim.offlineAddPlayer(this.config.characters[heroIndex].label)!.id;
       this.reconcileSprites();
       this.debugTiles();
