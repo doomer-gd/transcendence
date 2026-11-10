@@ -18,14 +18,14 @@ A multiplayer web-based 2D platformer fighting game built with Phaser 4, React, 
 
 ## Gameplay Overview
 
-Elemental Arena is a 2D side-scrolling platformer brawler where players choose a character and a map, join a matchmaking queue, and fight in real-time against other players. Combat is animation-driven and consists in attacks, blocks and dodges, as well as navigating the map and its obstacles.
+Elemental Arena is a 2D side-scrolling platformer brawler where players choose a character and a map, join a matchmaking queue, and fight in real-time against other players. Combat is animation-driven and consists in attacks, blocks and dodges, as well as in navigating the map and its obstacles.
 
 ---
 
 ## Main Features
 
 ### Characters
-6 playable characters, each with unique stats, move animations, and elemental-themed abilities. Each character has distinct parameters: speed, jump force, HP, energy, poise, gravity, attack damage, and cooldowns — all data-driven from JSON config files, which makes it very easy to add new characters or configuring existing ones.
+6 playable characters, each with unique stats, move animations, and elemental-themed abilities. Each character has distinct parameters: speed, jump force, HP, energy, poise, gravity, attack damage, and cooldowns — all data-driven from JSON config files, which makes it very easy to add new characters or configure existing ones.
 
 ### Combat System
 
@@ -151,7 +151,7 @@ Default keybindings (configurable in `public/config/keymap.json`):
 
 ## Credits
 
-As far as I can tell, all assets are human-made. A big thank you to itch.io user chierit for creaing the characters sprites, this project wouldn't be possible without them. Also many thanks to the other authors who's assets are used here:
+As far as I can tell, all assets are human-made. A big thank you to itch.io user chierit for creating the character sprites, this project wouldn't be possible without them. Also many thanks to the other authors whose assets are used here:
 
 | Asset | Author |
 |---|---|
