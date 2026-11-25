@@ -1,7 +1,7 @@
 {
   "frames": [
     {
-      "filename": "frame_000.png",
+      "filename": "frame_0.png",
       "frame": {
         "x": 1,
         "y": 1,
@@ -26,7 +26,7 @@
       }
     },
     {
-      "filename": "frame_001.png",
+      "filename": "frame_1.png",
       "frame": {
         "x": 1,
         "y": 58,
@@ -51,7 +51,7 @@
       }
     },
     {
-      "filename": "frame_002.png",
+      "filename": "frame_2.png",
       "frame": {
         "x": 1,
         "y": 115,
@@ -76,7 +76,7 @@
       }
     },
     {
-      "filename": "frame_003.png",
+      "filename": "frame_3.png",
       "frame": {
         "x": 1,
         "y": 172,
@@ -101,7 +101,7 @@
       }
     },
     {
-      "filename": "frame_004.png",
+      "filename": "frame_4.png",
       "frame": {
         "x": 1,
         "y": 229,
@@ -126,7 +126,7 @@
       }
     },
     {
-      "filename": "frame_005.png",
+      "filename": "frame_5.png",
       "frame": {
         "x": 1,
         "y": 286,
@@ -151,7 +151,7 @@
       }
     },
     {
-      "filename": "frame_006.png",
+      "filename": "frame_6.png",
       "frame": {
         "x": 1,
         "y": 343,
@@ -176,7 +176,7 @@
       }
     },
     {
-      "filename": "frame_007.png",
+      "filename": "frame_7.png",
       "frame": {
         "x": 1,
         "y": 400,
@@ -201,7 +201,7 @@
       }
     },
     {
-      "filename": "frame_008.png",
+      "filename": "frame_8.png",
       "frame": {
         "x": 1,
         "y": 457,
@@ -226,7 +226,7 @@
       }
     },
     {
-      "filename": "frame_009.png",
+      "filename": "frame_9.png",
       "frame": {
         "x": 1,
         "y": 514,
@@ -251,7 +251,7 @@
       }
     },
     {
-      "filename": "frame_010.png",
+      "filename": "frame_10.png",
       "frame": {
         "x": 1,
         "y": 571,
@@ -276,7 +276,7 @@
       }
     },
     {
-      "filename": "frame_011.png",
+      "filename": "frame_11.png",
       "frame": {
         "x": 1,
         "y": 628,
@@ -301,7 +301,7 @@
       }
     },
     {
-      "filename": "frame_012.png",
+      "filename": "frame_12.png",
       "frame": {
         "x": 1,
         "y": 685,
@@ -326,7 +326,7 @@
       }
     },
     {
-      "filename": "frame_013.png",
+      "filename": "frame_13.png",
       "frame": {
         "x": 1,
         "y": 742,
@@ -351,7 +351,7 @@
       }
     },
     {
-      "filename": "frame_014.png",
+      "filename": "frame_14.png",
       "frame": {
         "x": 1,
         "y": 799,
@@ -376,7 +376,7 @@
       }
     },
     {
-      "filename": "frame_015.png",
+      "filename": "frame_15.png",
       "frame": {
         "x": 1,
         "y": 856,
@@ -401,7 +401,7 @@
       }
     },
     {
-      "filename": "frame_016.png",
+      "filename": "frame_16.png",
       "frame": {
         "x": 1,
         "y": 913,
@@ -426,7 +426,7 @@
       }
     },
     {
-      "filename": "frame_017.png",
+      "filename": "frame_17.png",
       "frame": {
         "x": 1,
         "y": 970,
@@ -451,7 +451,7 @@
       }
     },
     {
-      "filename": "frame_018.png",
+      "filename": "frame_18.png",
       "frame": {
         "x": 1,
         "y": 1027,
@@ -476,7 +476,7 @@
       }
     },
     {
-      "filename": "frame_019.png",
+      "filename": "frame_19.png",
       "frame": {
         "x": 1,
         "y": 1084,
@@ -501,7 +501,7 @@
       }
     },
     {
-      "filename": "frame_020.png",
+      "filename": "frame_20.png",
       "frame": {
         "x": 1,
         "y": 1141,
@@ -526,7 +526,7 @@
       }
     },
     {
-      "filename": "frame_021.png",
+      "filename": "frame_21.png",
       "frame": {
         "x": 1,
         "y": 1198,
@@ -551,7 +551,7 @@
       }
     },
     {
-      "filename": "frame_022.png",
+      "filename": "frame_22.png",
       "frame": {
         "x": 1,
         "y": 1255,
@@ -576,7 +576,7 @@
       }
     },
     {
-      "filename": "frame_023.png",
+      "filename": "frame_23.png",
       "frame": {
         "x": 1,
         "y": 1312,

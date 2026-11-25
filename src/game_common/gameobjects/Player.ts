@@ -71,8 +71,24 @@ export enum EPlayerActionTypes
   secondary, //either ranged or block
   move,
   hit,
+  despawn,
+  spawn,
   dead
 }
+
+export const g_animationTree = new Map<EPlayerActionTypes, EPlayerActionTypes>(
+  [
+    [EPlayerActionTypes.block, EPlayerActionTypes.move],
+    [EPlayerActionTypes.dodge, EPlayerActionTypes.move],
+    [EPlayerActionTypes.hit, EPlayerActionTypes.move],
+    [EPlayerActionTypes.melee, EPlayerActionTypes.move],
+    [EPlayerActionTypes.ranged, EPlayerActionTypes.move],
+    [EPlayerActionTypes.special, EPlayerActionTypes.move],
+    [EPlayerActionTypes.move, EPlayerActionTypes.move],
+    [EPlayerActionTypes.dead, EPlayerActionTypes.despawn],
+    [EPlayerActionTypes.despawn, EPlayerActionTypes.spawn],
+    [EPlayerActionTypes.spawn, EPlayerActionTypes.spawn]
+  ])
 
 export const G_ActionAnimMap = new Map<EPlayerActionTypes, keyof IAnimationModes>(
   [
@@ -82,7 +98,10 @@ export const G_ActionAnimMap = new Map<EPlayerActionTypes, keyof IAnimationModes
     [EPlayerActionTypes.ranged, "attack2"],
     [EPlayerActionTypes.special, "special"],
     [EPlayerActionTypes.hit, "hit"],
-    [EPlayerActionTypes.dead, "dead"]
+    [EPlayerActionTypes.dead, "dead"],
+    [EPlayerActionTypes.despawn, "despawn"],
+    [EPlayerActionTypes.spawn, "spawn"]
+
   ]);
 
 export const G_AnimActionMap = new Map<keyof IAnimationModes, EPlayerActionTypes>(
@@ -141,14 +160,14 @@ export class Player extends GameObject
 
   update()
   {
-    if (!this.state.isReady)
-      return ;
     this.state.actionStep++;
     this.perTickStatusUpdate();
+    if (this.isLastStep())
+      this.switchState();
     this.controller.update();
     this.animator.update();
     Body.applyForce(this.body, this.body.position, this.gravity);
-    this.checkDead();
+    // this.checkDead();
   }
 
   beHit(damage: number, hitOrigin: Matter.Vector, id: number): boolean
@@ -272,13 +291,25 @@ export class Player extends GameObject
     }
   }
 
-  private checkDead()
+  private switchState()
   {
-    if (this.state.action === EPlayerActionTypes.dead && this.isLastStep() && this.state.isReady)
+    switch (this.state.action)
     {
-      this.state.action = EPlayerActionTypes.move;
-      this.state.isReady = false;
-      this.events.emit("dead", this.id);
+      case EPlayerActionTypes.despawn:
+        this.state.isReady = false;
+        this.events.emit("dead", this.id);
+        break ;
+      case EPlayerActionTypes.special:
+        this.state.charges = this.params.charges;
+    }
+    const nextState = g_animationTree.get(this.state.action);
+    if (nextState !== undefined)
+    {
+      this.state.action = nextState;
+      this.state.actionStep = 0;
+      this.state.actionEnd = this.config.durations[nextState] ?? 100000;
+      if (nextState === EPlayerActionTypes.move)
+        this.state.isInvulnerable = false;
     }
   }
 

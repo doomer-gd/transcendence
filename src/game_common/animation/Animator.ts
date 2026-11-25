@@ -29,7 +29,9 @@ export interface IAnimationModes
   special?: IAnimationData,
   dodge?: IAnimationData,
   hit?: IAnimationData,
-  dead?: IAnimationData
+  dead?: IAnimationData,
+  despawn?: IAnimationData,
+  spawn?: IAnimationData
 }
 
 export interface IAnimationState

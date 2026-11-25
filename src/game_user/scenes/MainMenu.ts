@@ -505,19 +505,20 @@ export class MainMenu extends Scene
 
   private parseConfig()
   {
-    this.config.characters.forEach((playerConfig: PlayerConfig) =>
-    {
-      const playerData = this.cache.json.get(playerConfig.data.label);
-      Parsers.parseCharacter(playerConfig, playerData);
-      playerConfig.frames.forEach((frame: IFrameData) =>
-        Parsers.cutFrames(this, playerConfig.atlas.label, frame));
-    });
     this.config.gameObjects.forEach((obj: ObjectConstructData) =>
     {
       const objConfig = this.cache.json.get(obj.data?.label);
       Parsers.parseGameObject(obj, objConfig);
       obj.frames?.forEach((frame: IFrameData) =>
         Parsers.cutFrames(this, obj.atlas.label, frame));
+    });
+    this.config.characters.forEach((playerConfig: PlayerConfig) =>
+    {
+      const playerData = this.cache.json.get(playerConfig.data.label);
+      Parsers.parseCharacter(playerConfig, playerData, this.config);
+      playerConfig.frames.forEach((frame: IFrameData) =>
+        Parsers.cutFrames(this, playerConfig.atlas.label, frame));
+
     });
     //parse the maps last
     this.config.maps.forEach((map: GameMap) =>

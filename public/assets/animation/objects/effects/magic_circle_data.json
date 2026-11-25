@@ -1,0 +1,21 @@
+{
+  "label": "spawn",
+  "fileName": "./assets/animation/objects/effects/magic_circle_data.json",
+  "frames": [
+    { "label": "magic_circle", "type": "spawn", "prefix": "frame_", "numberFrames": 24, "duration": 72 }
+  ],
+  "hitbox":
+  {
+    "height": 55,
+    "width": 5,
+    "xOffset": 0,
+    "yOffset": 0,
+    "scale": 1,
+    "options":{
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "meta": { "atlas": "magic_circle_atlas.json" }
+}

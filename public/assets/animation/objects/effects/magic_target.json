@@ -1,7 +1,7 @@
 {
   "frames": [
     {
-      "filename": "2_01.png",
+      "filename": "2_00.png",
       "frame": {
         "x": 1,
         "y": 1,
@@ -26,7 +26,7 @@
       }
     },
     {
-      "filename": "2_02.png",
+      "filename": "2_01.png",
       "frame": {
         "x": 1,
         "y": 75,
@@ -51,7 +51,7 @@
       }
     },
     {
-      "filename": "2_03.png",
+      "filename": "2_02.png",
       "frame": {
         "x": 1,
         "y": 149,
@@ -76,7 +76,7 @@
       }
     },
     {
-      "filename": "2_04.png",
+      "filename": "2_03.png",
       "frame": {
         "x": 1,
         "y": 223,
@@ -101,7 +101,7 @@
       }
     },
     {
-      "filename": "2_05.png",
+      "filename": "2_04.png",
       "frame": {
         "x": 1,
         "y": 297,
@@ -126,7 +126,7 @@
       }
     },
     {
-      "filename": "2_06.png",
+      "filename": "2_05.png",
       "frame": {
         "x": 1,
         "y": 371,
@@ -151,7 +151,7 @@
       }
     },
     {
-      "filename": "2_07.png",
+      "filename": "2_06.png",
       "frame": {
         "x": 1,
         "y": 445,
@@ -176,7 +176,7 @@
       }
     },
     {
-      "filename": "2_08.png",
+      "filename": "2_07.png",
       "frame": {
         "x": 1,
         "y": 519,

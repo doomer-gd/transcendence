@@ -3,8 +3,9 @@ import { HealthBar } from "../ui/HealthBar";
 import Matter, { Body } from "matter-js";
 import { Animator } from "@/game_common/animation/Animator";
 import { NickNameBar } from "../ui/Nickname";
-import { Hitbox, ObjectConstructData } from "@/game_common/utility/Constructors";
+import { Hitbox } from "@/game_common/utility/Constructors";
 import { AudioSystem, ISoundProfile } from "../player/AudioSystem";
+import { EPlayerActionTypes, Player } from "@/game_common/gameobjects/Player";
 
 
 export const DF_CHAR_SCALE = 2;
@@ -56,6 +57,7 @@ export class EntitySprite
       this.updateAnimator();
   }
 
+
   setVisible(isVisible: boolean)
   {
     this.sprite.setVisible(isVisible);
@@ -68,7 +70,9 @@ export class EntitySprite
     let pos = {x: 0, y: 0};
     if (this.body)
     {
-      pos = Matter.Vector.add(this.body.position, this.offset);
+      pos = this.body.position;
+      if (!this.isPlayerSpecial())
+        pos = Matter.Vector.add(pos, this.offset);
       this.sprite.setPosition(pos.x, pos.y);
       if (DEBUG_MODE)
         this.debugUpdate();
@@ -79,6 +83,16 @@ export class EntitySprite
       this.sprite.setScale(this.facing * Math.abs(this.sprite.scaleX), this.sprite.scaleY);
     }
     return pos;
+  }
+
+  private isPlayerSpecial()
+  {
+    if (this.parent.type !== GameObjectType.player)
+      return false;
+    const action = (this.parent as Player).state.action;
+    if (action === EPlayerActionTypes.spawn || action === EPlayerActionTypes.despawn)
+      return true;
+    return false;
   }
 
   private updateAnimator()

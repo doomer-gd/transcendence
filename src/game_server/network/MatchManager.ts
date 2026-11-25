@@ -326,17 +326,17 @@ export class MatchManager {
     const configFileName = PUBLIC_FOLDER + "/config/config.json";
     var confString = readFileSync(configFileName, "utf-8");
     this.config = JSON.parse(confString) as GameConstructData;
-    this.config.characters.forEach((char: PlayerConfig) =>
-    {
-      confString = readFileSync(PUBLIC_FOLDER + char.data.fileName, "utf-8");
-      Parsers.parseCharacter(char, JSON.parse(confString));
-    });
     this.config.gameObjects.forEach((obj: ObjectConstructData) =>
     {
       if (!obj.data)
         return;
       confString = readFileSync(PUBLIC_FOLDER + obj.data.fileName, "utf-8");
       Parsers.parseGameObject(obj, JSON.parse(confString));
+    });
+    this.config.characters.forEach((char: PlayerConfig) =>
+    {
+      confString = readFileSync(PUBLIC_FOLDER + char.data.fileName, "utf-8");
+      Parsers.parseCharacter(char, JSON.parse(confString), this.config);
     });
     //parse the maps last
     this.config.maps.forEach((map: GameMap) =>

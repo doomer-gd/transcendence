@@ -98,6 +98,8 @@ export class MoverPlayer
         this.dodge();
         return true;
       case EPlayerActionTypes.dead:
+      case EPlayerActionTypes.despawn:
+      case EPlayerActionTypes.spawn:
       case EPlayerActionTypes.hit:
         this.state.isInvulnerable = true;
         this.setState(type);
@@ -115,8 +117,6 @@ export class MoverPlayer
         this.state.actionStep = this.state.actionEnd;
       return ;
     }
-    if (this.state.actionStep >= this.state.actionEnd)
-      this.refresh();
     this.checkIsOnGround();
     this.applyOnGroundEffects();
     switch(this.state.action)
@@ -184,7 +184,6 @@ export class MoverPlayer
     this.state.actionStep = 0;
     this.state.actionEnd = 1000000;
     this.state.isInvulnerable = false;
-    this.player.isSoundPlayed = false;
   }
   private dodge()
   {
@@ -225,5 +224,4 @@ export class MoverPlayer
     this.state.actionEnd = this.player.config.durations[type];
     Body.setVelocity(this.body, {x: 0, y: this.body.velocity.y});
   }
-
 }

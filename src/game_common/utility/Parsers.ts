@@ -55,7 +55,7 @@ export function parseMap(config: GameConstructData, map: GameMap, readMapConfig:
   }
 }
 
-export function parseCharacter(config: PlayerConfig, readConfig: any)
+export function parseCharacter(config: PlayerConfig, readConfig: any, configGlobal: GameConstructData)
 {
   Object.assign(config, readConfig);
   config.animModes = {idle:{label: '', numFrames: 0, duration: 0, ticksPerFrame: 1, inverseTPF: 1}};
@@ -63,12 +63,10 @@ export function parseCharacter(config: PlayerConfig, readConfig: any)
   config.frames.forEach((frame: IFrameData) =>
   {
     createAnimData(config.animModes, frame);
-    const action = G_AnimActionMap.get(frame.type) as number;
-    if (action !== undefined)
-      config.durations[action as number] = frame.duration;
-    if (action === EPlayerActionTypes.ranged)
-      config.durations[EPlayerActionTypes.block] = frame.duration;
+    addFrameDuration(config, frame);
   });
+  addCommonAnim(config, "despawn", configGlobal);
+  addCommonAnim(config, "spawn", configGlobal);
 }
 
 export function parseGameObject(config: ObjectConstructData, readConfig: any)
@@ -89,6 +87,25 @@ export function createAnimData(animModes: IAnimationModes, frame: IFrameData)
     duration: frame.duration,
     ticksPerFrame: frame.duration / frame.numberFrames,
     inverseTPF: frame.numberFrames / frame.duration
+  }
+}
+
+export function addFrameDuration(config: PlayerConfig, frame: IFrameData)
+{
+  const action = G_AnimActionMap.get(frame.type) as EPlayerActionTypes;
+  if (action !== undefined)
+    config.durations[action] = frame.duration;
+  if (action === EPlayerActionTypes.ranged)
+    config.durations[EPlayerActionTypes.block] = frame.duration;
+}
+
+export function addCommonAnim(config: PlayerConfig, label: string, configGlobal: GameConstructData)
+{
+  const obj = configGlobal.gameObjects.find((obj) => obj.label === label);
+  if (obj && obj.frames)
+  {
+    createAnimData(config.animModes, obj.frames[0]);
+    addFrameDuration(config, obj.frames[0]);
   }
 }
 

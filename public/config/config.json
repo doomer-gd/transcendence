@@ -60,12 +60,6 @@
       "data": { "label": "water_priestess_data", "fileName": "/assets/animation/characters/water_priestess/water_priestess_data.json" },
       "atlas": { "label": "water_priestess_atlas", "fileName": "/assets/animation/characters/water_priestess/water_priestess_atlas.json" },
       "image": { "label": "water_priestess_image", "fileName": "/assets/animation/characters/water_priestess/water_priestess.png" }
-    },
-    {
-      "label": "wizard",
-      "data": { "label": "wizard_data", "fileName": "/assets/animation/characters/wizard/wizard_data.json" },
-      "atlas": { "label": "wizard_atlas", "fileName": "/assets/animation/characters/wizard/wizard_atlas.json" },
-      "image": { "label": "wizard_image", "fileName": "/assets/animation/characters/wizard/wizard_atlas.png" }
     }
   ],
   "gameObjects":[
@@ -141,11 +135,32 @@
       "image": { "label": "lava_sprite_image", "fileName": "/assets/animation/objects/obstacles/lava_bottom.png" }
     },
     {
+      "label": "despawn",
+      "type": "decor",
+      "data": { "label": "smoke_data", "fileName": "/assets/animation/objects/effects/smoke_data.json" },
+      "atlas": { "label": "smoke_atlas", "fileName": "/assets/animation/objects/effects/smoke_atlas.json" },
+      "image": { "label": "smoke_image", "fileName": "/assets/animation/objects/effects/smoke.png" }
+    },
+    {
       "label": "flame",
       "type": "decor",
       "data": { "label": "flame_data", "fileName": "/assets/ui/flame_data.json" },
       "atlas": { "label": "flame_atlas", "fileName": "/assets/ui/flame_atlas.json" },
       "image": { "label": "flame_image", "fileName": "/assets/ui/flame.png" }
+    },
+    {
+      "label": "spawn",
+      "type": "decor",
+      "data": { "label": "magic_circle_data", "fileName": "/assets/animation/objects/effects/magic_circle_data.json" },
+      "atlas": { "label": "magic_circle_atlas", "fileName": "/assets/animation/objects/effects/magic_circle.json" },
+      "image": { "label": "magic_circle_image", "fileName": "/assets/animation/objects/effects/magic_circle.png" }
+    },
+    {
+      "label": "magic_target",
+      "type": "decor",
+      "data": { "label": "magic_target_data", "fileName": "/assets/animation/objects/effects/magic_target_data.json" },
+      "atlas": { "label": "magic_target_atlas", "fileName": "/assets/animation/objects/effects/magic_target.json" },
+      "image": { "label": "magic_target_image", "fileName": "/assets/animation/objects/effects/magic_target.png" }
     }
   ],
   "audio":

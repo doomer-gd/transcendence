@@ -1,7 +1,6 @@
 import { Body } from "matter-js";
 import { EPlayerActionTypes, G_ActionAnimMap, IPlayerState, Player } from "../gameobjects/Player";
 import { Animator } from "./Animator";
-import { IsZero } from "../utility/Maths";
 
 
 export class AnimatorPlayer extends Animator

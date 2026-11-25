@@ -1,0 +1,21 @@
+{
+  "label": "magic_target",
+  "fileName": "./assets/animation/objects/effects/magic_target_data.json",
+  "frames": [
+    { "label": "magic_target", "type": "idle", "prefix": "2_0", "numberFrames": 8, "duration": 45 }
+  ],
+  "hitbox":
+  {
+    "height": 72,
+    "width": 72,
+    "xOffset": 0,
+    "yOffset": 0,
+    "scale": 1,
+    "options":{
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "meta": { "atlas": "magic_target_atlas.json" }
+}

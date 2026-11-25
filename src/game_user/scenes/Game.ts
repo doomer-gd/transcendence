@@ -210,8 +210,8 @@ export class GameScene extends Scene
     this.events.on("move", (dir: number) => this.sim.addInput({id: this.player.localId, x: dir}));
     this.events.on("jump", () => this.sim.addInput({id: this.player.localId, jump: true}));
     this.events.on("action", (type: EPlayerActionTypes) => this.sim.addInput({id: this.player.localId, action: type}));
-    this.sim.eventsGame.on("despawn", (id: number) => this.spriteFactory.getSprite(id)?.setVisible(false));
-    this.sim.eventsGame.on("spawn", (id: number) => this.spriteFactory.getSprite(id)?.setVisible(true));
+    // this.sim.eventsGame.on("despawn", (id: number) => this.spriteFactory.getSprite(id)?.setVisible(false));
+    // this.sim.eventsGame.on("spawn", (id: number) => this.spriteFactory.getSprite(id)?.setVisible(true));
   }
 
   private addAudioEventListeners()

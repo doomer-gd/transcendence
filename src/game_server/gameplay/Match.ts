@@ -177,8 +177,10 @@ export class Match {
   private callbackOnFrag(id: number, author: number)
   {
     let message: AnnounceEvent;
-    if (author === 0) message = { type: "dead", data: { id: id } };
-    else message = { type: "frag", data: { id: id, author: author } };
+    if (author === 0)
+      message = { type: "dead", data: { id: id } };
+    else
+      message = { type: "frag", data: { id: id, author: author } };
     this.network.ioSock.to(this.id).emit("announce", message);
     this.network.ioSock.to(this.id).emit("scores", this.game.exportScore());
   }

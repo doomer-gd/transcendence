@@ -1,0 +1,21 @@
+{
+  "label": "despawn",
+  "fileName": "./assets/animation/effects/smoke_data.json",
+  "frames": [
+    { "label": "smoke_despawn", "type": "despawn", "prefix": "9_0", "numberFrames": 8, "duration": 45 }
+  ],
+  "hitbox":
+  {
+    "height": 72,
+    "width": 72,
+    "xOffset": -5,
+    "yOffset": 0,
+    "scale": 2,
+    "options":{
+      "friction": 0,
+      "restitution": 0,
+      "inertia": "Infinity"
+    }
+  },
+  "meta": { "atlas": "knife_atlas.json" }
+}
